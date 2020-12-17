@@ -3,3 +3,5 @@ skript
 :Author:    Alex Schilling
 :Email:     aexx at gmx.net
 
+Skript Sammlung, Script collection
+
