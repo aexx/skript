@@ -5,3 +5,24 @@ skript
 
 Skript Sammlung, Script collection
 
+.Notizen, notes .bashrc
+[source,bash]
+----
+# aex
+PS1="\[\033[36m\]\j \u@\h\[\033[37m\]:\w/ \D{%Y-%m-%d} \t \n\[\033[36m\]\$ \[\033[39m\]" #hellblaugrau
+alias ..='cd ..'
+alias dfh='df -ah'
+alias dfm='df -am'
+alias lt='ls -ltrah'
+alias h='history 40'
+alias less='less -i'
+alias psram='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND";\ps aux | sort -rnk 4 | head'
+alias pscpu='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND";\ps aux | sort -rnk 3 | head'
+alias rm='rm -iv'
+export GOPATH=$HOME/go
+export PATH=$HOME/githubaexx/skript/:$HOME/bigaex/Aex/githubaexx/skript/:$HOME/bigaex/Aex/Unix/Skripts/:$HOME/bin:$PATH
+export PATH=$GOPATH:$GOPATH/bin:$PATH
+#
+----
+
+
