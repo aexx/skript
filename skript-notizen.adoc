@@ -3,6 +3,9 @@ skript-notizen
 :Author:    Alex Schilling
 :Email:     aexx at gmx.net
 
+TIP: eigene notizen, nicht so interessant für andere, +
+my own notes, not so interesting to others
+
 .Notizen, notes .bashrc
 [source,bash]
 ----
