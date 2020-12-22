@@ -61,7 +61,7 @@ do
 # if [ -n "$(git status --porcelain)" ]; then
  if [ -n "$(git status|grep git\ pull )" ]; then
      echo "there are changes";
-     aexgitdiff
+     #aexgitdiff
      printf "\n${b}${MERGE}:  ${n}"  ; ask ; ${MERGE}
    else
      echo "no changes";
@@ -69,7 +69,7 @@ do
  printf "\n${b}${STATUS}:  ${n}" ; ${STATUS}
  if [ -n "$(git status --porcelain)" ]; then
      echo "there are changes";
-     aexgitdiff
+     #aexgitdiff
      printf "\n${b}${ADD}:  ${n}"  ; ask ; ${ADD}
      printf "\n${b}${COMMIT}:  ${n}" ; ask ; gitcommit
      aexgitdiff
