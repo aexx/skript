@@ -55,6 +55,7 @@ for repo in `ls`
 do
  cd $repo
  printf "\n${r}========[ $repo ]========\n${n}"
+ printf "${li}======[ Local <== REMOTE ]======\n${n}"
  printf "\n${b}${STATUS}:  ${n}" ; ${STATUS}
  printf "\n${b}${FETCH}:  ${n}"  ; ${FETCH}
  aexgitdiff
@@ -66,7 +67,8 @@ do
    else
      echo "no changes";
  fi
- printf "\n${b}${STATUS}:  ${n}" ; ${STATUS}
+ printf "${li}======[ LOCAL ==> Remote ]======\n${n}"
+ printf "\n${li}${STATUS}:  ${n}" ; ${STATUS}
  if [ -n "$(git status --porcelain)" ]; then
      echo "there are changes";
      #aexgitdiff
