@@ -6,29 +6,31 @@ b="\033[34m"
 hb="\033[36m"
 li="\033[35m"
 n="\033[m\017"
-USEDIFF=diff
 if [ $# -lt 1 ]
   then
-  printf "\n${g} $0 GIT-Folder/GIT-Ordner [-m]  # m=meld => Use meld as DIFF-Tool${n}\n\n e.g. $0 ~/githubaexx/ [-m]\n\n"
+	  printf "\n${g} $0 GIT-Folder/GIT-Ordner [-m]  # -m=difftool (meld) => Use from config ${n}\n\n e.g. $0 ~/githubaexx/ [-m]\n\n"
   exit 1
 fi
 if [ $# -lt 2 ]
   then
-  printf "\n${g} $0 GIT-Folder/GIT-Ordner [-m]  # m=meld => Use meld as DIFF-Tool${n}\n\n e.g. $0 ~/githubaexx/ [-m]\n\n"
+	  printf "\n${g} $0 GIT-Folder/GIT-Ordner [-m]  # -m=difftool (meld) => Use from config ${n}\n\n e.g. $0 ~/githubaexx/ [-m]\n\n"
 fi
-[ "$2" = "-m" ] && USEDIFF=difftool 
-echo $USEDIFF
+[ "$2" = "-m" ] && DIFF=difftool 
+echo $DIFF
 ask () {
 printf "${li}"
 read -pWeiter?,continue?
 printf "${n}"
 }
 aexgitdiff () { 
-DIFF1="git $USEDIFF";DIFF2="git $USEDIFF main origin/main"
+DIFF1="git diff" ; DIFF2="git diff main origin/main"
+DIFF1A="git $DIFF" ; DIFF2A="git $DIFF main origin/main"
 printf "\n${g}====[ $DIFF1 ]====\n${n}"
 $DIFF1
+#[ -n $DIFF ] && $DIFF1A
 printf "${g}====[ $DIFF2 ]====\n${n}" 
 $DIFF2
+#[ -n $DIFF ] && $DIFF2A
 }
 STATUS="git status"
 FETCH="git fetch"
