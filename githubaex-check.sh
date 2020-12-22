@@ -79,7 +79,7 @@ do
      echo "no changes";
  fi
  cd ..
- kreisel b 1 2>/dev/null || sleep 2
+ countdown g 1 2>/dev/null || sleep 2
 done
 printf "\n${n}"
 
