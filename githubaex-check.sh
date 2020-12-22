@@ -51,7 +51,6 @@ if [ -d $1 ]
 fi
 ask
 
-#ls |while read repo
 for repo in `ls`
 do
  cd $repo
