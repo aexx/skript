@@ -41,7 +41,7 @@ git commit -a -m "$(date +%Y-%m-%d_%H:%M:%S) $(uname -n) "
 }
 COMMIT="git commit -a -m \"$(date +%Y-%m-%d_%H:%M:%S) $(uname -n) \""
 PUSH="git push"
-
+#
 if [ -d $1 ] 
  then
   cd $1
@@ -50,17 +50,17 @@ if [ -d $1 ]
   exit 1
 fi
 ask
-
+#
 for repo in `ls`
 do
  cd $repo
  printf "\n${r}========[ $repo ]========\n${n}"
  printf "\n${b}${STATUS}:  ${n}" ; ${STATUS}
+ printf "\n${b}${FETCH}:  ${n}"  ; ${FETCH}
+ aexgitdiff
 # if [ -n "$(git status --porcelain)" ]; then
  if [ -n "$(git status|grep git\ pull )" ]; then
      echo "there are changes";
-     aexgitdiff
-     printf "\n${b}${FETCH}:  ${n}"  ; ${FETCH}
      aexgitdiff
      printf "\n${b}${MERGE}:  ${n}"  ; ask ; ${MERGE}
    else
@@ -81,4 +81,4 @@ do
  countdown g 1 2>/dev/null || sleep 2
 done
 printf "\n${n}"
-
+#
