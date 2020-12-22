@@ -57,7 +57,8 @@ do
  cd $repo
  printf "\n${r}========[ $repo ]========\n${n}"
  printf "\n${b}${STATUS}:  ${n}" ; ${STATUS}
- if [ -n "$(git status --porcelain)" ]; then
+# if [ -n "$(git status --porcelain)" ]; then
+ if [ -n "$(git status|grep git\ pull )" ]; then
      echo "there are changes";
      aexgitdiff
      printf "\n${b}${FETCH}:  ${n}"  ; ${FETCH}
