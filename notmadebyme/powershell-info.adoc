@@ -1,0 +1,7 @@
+
+= powershell info
+
+
+Einzelne Powershell Scripts zulassen: `PS # Set-ExecutionPolicy Unrestricted -force -Scope CurrentUser`
+
+
