@@ -9,7 +9,7 @@ fi
 [ -f $1 ] || echo "EXIT - NO existing md5-file"
 [ -f $1 ] || exit 1
 
-ls *|grep -v ".md5" |while read f
+ls *|grep -v ".md5" |grep -v ".sha256" |while read f
 do 
   #sleep 1
   [ -f "$f" ] && grep -q $f $1 && ls -la $f 
