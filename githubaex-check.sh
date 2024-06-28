@@ -25,7 +25,7 @@ printf "${n}"
 aexgitdiff () { 
 DIFF1="git diff" ; DIFF2="git diff main origin/main"
 DIFF1A="git $DIFF" ; DIFF2A="git $DIFF main origin/main"
-printf "\n${g}====[ $DIFF1 ]============================\n${n}"
+printf "\n${g}====[ $DIFF1 ]=====================\n${n}"
 $DIFF1
 [ -n "$DIFF" ] && $DIFF1A
 printf "${g}====[ $DIFF2 ]====\n${n}" 
@@ -54,28 +54,28 @@ ask
 for repo in `ls`
 do
  cd $repo
- printf "\n${r}========[ $repo ]========\n${n}"
- printf "${li}======[ Local <== REMOTE ]======\n${n}"
- printf "\n${b}${STATUS}:  ${n}" ; ${STATUS}
- printf "\n${b}${FETCH}:  ${n}"  ; ${FETCH}
+ printf "\n${r}========[ $repo ]================================\n${n}"
+ printf "${li}======[ Local   <==   REMOTE ]==============\n"
+ printf "\n${STATUS}:  ${n}" ; ${STATUS}
+ printf "\n${FETCH}:  ${n}"  ; ${FETCH}
  aexgitdiff
 # if [ -n "$(git status --porcelain)" ]; then
  if [ -n "$(git status|grep git\ pull )" ]; then
      echo "there are changes";
      #aexgitdiff
-     printf "\n${b}${MERGE}:  ${n}"  ; ask ; ${MERGE}
+     printf "\n${MERGE}:  ${n}"  ; ask ; ${MERGE}
    else
      echo "no changes";
  fi
- printf "${li}======[ LOCAL ==> Remote ]======\n${n}"
+ printf "${li}======[ LOCAL   ==>   Remote ]==============\n${n}"
  printf "\n${li}${STATUS}:  ${n}" ; ${STATUS}
  if [ -n "$(git status --porcelain)" ]; then
      echo "there are changes";
      #aexgitdiff
-     printf "\n${b}${ADD}:  ${n}"  ; ask ; ${ADD}
-     printf "\n${b}${COMMIT}:  ${n}" ; ask ; gitcommit
+     printf "\n${ADD}:  ${n}"  ; ask ; ${ADD}
+     printf "\n${COMMIT}:  ${n}" ; ask ; gitcommit
      aexgitdiff
-     printf "\n${b}${PUSH}:  ${n}" ; ask ; ${PUSH}
+     printf "\n${PUSH}:  ${n}" ; ask ; ${PUSH}
    else
      echo "no changes";
  fi
