@@ -54,7 +54,7 @@ ask
 for repo in `ls`
 do
  cd $repo
- printf "\n${r}========[ $repo ]================================\n${n}"
+ printf "\n${r}========[ $repo ]====================================\n${n}"
  printf "${li}======[ Local   <==   REMOTE ]==============\n"
  printf "\n${STATUS}:  ${n}" ; ${STATUS}
  printf "\n${FETCH}:  ${n}"  ; ${FETCH}
