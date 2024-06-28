@@ -25,7 +25,7 @@ printf "${n}"
 aexgitdiff () { 
 DIFF1="git diff" ; DIFF2="git diff main origin/main"
 DIFF1A="git $DIFF" ; DIFF2A="git $DIFF main origin/main"
-printf "\n${g}====[ $DIFF1 ]====\n${n}"
+printf "\n${g}====[ $DIFF1 ]============================\n${n}"
 $DIFF1
 [ -n "$DIFF" ] && $DIFF1A
 printf "${g}====[ $DIFF2 ]====\n${n}" 
