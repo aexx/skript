@@ -20,8 +20,8 @@ fi
 
 cross-analyse () { 
 printf "\n╭─── MD5 Cross Analyse ────────────────────────────────────────────────────────────────────────────────────╮ "
-printf "\n│ MD5 file Cross-check / Gegen-check    [.] => 50 , [:] => 100 files /.Dateien.                            │ "
-printf "\n│ Nicht identische Dateien werden unten angezeigt / files that are not identical are displayed below.      │ "
+printf "\n│  MD5 file Cross-check / Gegen-check    [.] => 50  , [:] => 100 files /.Dateien.                          │ "
+printf "\n│  Nicht identische Dateien werden unten angezeigt  / files that are not identical are displayed below.    │ "
 printf "\n╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ─╯ \n"
 cat $1 |while read line
 do 
@@ -39,11 +39,12 @@ Check ==> $line <== \n
   [ $zaehler -eq 50 ] && printf "."
   [ $zaehler -eq 100 ] && printf "\b:"
   [ $zaehler -eq 100 ] && zaehler=0
-  [ $gesamtzaehler -eq 5000 ] && printf "\n"
+  [ $gesamtzaehler -eq 10000 ] && printf "\n"
+  [ $gesamtzaehler -eq 10000 ] && gesamtzaehler=0
 done 
 }
 
-clear
+clear ; printf "\n"
 
 cross-analyse $1 $2
 printf "\n
