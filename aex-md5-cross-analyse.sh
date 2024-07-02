@@ -1,7 +1,8 @@
 #!/bin/bash
 
-typeset -i zaehler
+typeset -i zaehler gesamtzaehler
 zaehler=0
+gesamtzaehler=0
 
 usage () {
 printf "Usage: \n
@@ -27,6 +28,7 @@ printf "\n╭──────────────────────�
 printf "\n╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ─╯ \n"
 cat $1 |while read line
 do 
+  gesamtzaehler=$gesamtzaehler+1
   zaehler=$zaehler+1
   nurmd5=$(echo $line|cut -c-32)
   grep -q $nurmd5 $2 || printf "
@@ -39,7 +41,8 @@ Check ==> $line <== \n
   #[ $zaehler -eq 100 ] && printf "\b\b\b\b\b\b\b\b\b\b:"
   [ $zaehler -eq 50 ] && printf "."
   [ $zaehler -eq 100 ] && printf "\b:"
-  [ $zaehler -eq 100 ] && ( zaehler=0 ; printf "\n" )
+  [ $zaehler -eq 100 ] && zaehler=0
+  [ $gesamtzaehler -eq 5000 ] && printf "\n"
 done 
 }
 
