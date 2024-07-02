@@ -18,13 +18,10 @@ if [ $# -ne 2 ]
     exit 1
 fi
 
-
 cross-analyse () { 
 printf "\n╭─── MD5 Cross Analyse ────────────────────────────────────────────────────────────────────────────────────╮ "
 printf "\n│ MD5 file Cross-check / Gegen-check    [.] => 50 , [:] => 100 files /.Dateien.                            │ "
 printf "\n│ Nicht identische Dateien werden unten angezeigt / files that are not identical are displayed below.      │ "
-printf "\n╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯ "
-printf "\n╭──────────────────────────────────────────────────────────────────────────────────────────────────────────╮ "
 printf "\n╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ─╯ \n"
 cat $1 |while read line
 do 
