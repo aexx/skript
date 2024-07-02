@@ -48,10 +48,11 @@ clear ; printf "\n"
 
 cross-analyse $1 $2
 printf "\n
-______________________________________________________
+╭────────────────────────────────────────────────╮
+│  Dateien werden getauscht / files are swapped  |
+╰────────────────────────────────────────────────╯   
+\n\n"
 
- Dateien werden getauscht, files are swapped
-______________________________________________________ \n\n"
 cross-analyse $2 $1
 
 printf "\n\n"
