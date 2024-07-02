@@ -39,7 +39,7 @@ Check ==> $line <== \n
   #[ $zaehler -eq 100 ] && printf "\b\b\b\b\b\b\b\b\b\b:"
   [ $zaehler -eq 50 ] && printf "."
   [ $zaehler -eq 100 ] && printf "\b:"
-  [ $zaehler -eq 100 ] && zaehler=0
+  [ $zaehler -eq 100 ] && ( zaehler=0 ; printf "\n" )
 done 
 }
 
