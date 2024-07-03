@@ -18,7 +18,7 @@ printf "Usage: \n
  e.g.: `basename $0`  md5list2024-06-12_1147_aspi_home_aex_sort_md5  md5list2024-06-12_1148_aspi_media_Intenso_aex_sort_md5 \n\n"
 }
 
-#printf "\n\nAnzahl,Count Parameters: $# \n\n"
+##printf "\n\nAnzahl,Count Parameters: $# \n\n"
 
 if [ $# -ne 2 ]
     then
@@ -51,15 +51,14 @@ Check ==> $line <== \n${li}
   [ $gesamtzaehler -eq 10000 ] && gesamtzaehler=0
 done 
 }
-
-clear ; printf "\n"
+printf "\n"
 
 cross-analyse $1 $2
 printf "\n${li}
 ╭────────────────────────────────────────────────╮
 │  Dateien werden getauscht / files are swapped  │
 ╰────────────────────────────────────────────────╯   
-\n\n${n}"
+\n${n}"
 
 cross-analyse $2 $1
 
