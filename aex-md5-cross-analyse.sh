@@ -1,5 +1,13 @@
 #!/bin/bash
 
+r="\033[31m"
+g="\033[32m"
+gr="\033[37m"
+b="\033[34m"
+hb="\033[36m"
+li="\033[35m"
+n="\033[m\017"
+
 typeset -i zaehler gesamtzaehler
 zaehler=0
 gesamtzaehler=0
@@ -19,19 +27,19 @@ if [ $# -ne 2 ]
 fi
 
 cross-analyse () { 
-printf "\n╭─── MD5 Cross Analyse ────────────────────────────────────────────────────────────────────────────────────╮ "
-printf "\n│  MD5 file Cross-check / Gegen-check    [.] => 50  , [:] => 100 files /.Dateien.                          │ "
-printf "\n│  Nicht identische Dateien werden unten angezeigt  / files that are not identical are displayed below.    │ "
-printf "\n╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ─╯ \n"
+printf "\n${li}
+╭─── MD5 Cross Analyse ────────────────────────────────────────────────────────────────────────────────────╮ 
+│  MD5 file Cross-check / Gegen-check    [.] => 50  , [:] => 100 files /.Dateien.                          │ 
+│  Nicht identische Dateien werden unten angezeigt  / files that are not identical are displayed below.    │ 
+╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ─╯ ${n}\n"
 cat $1 |while read line
 do 
   gesamtzaehler=$gesamtzaehler+1
   zaehler=$zaehler+1
   nurmd5=$(echo $line|cut -c-32)
   grep -q $nurmd5 $2 || printf "
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-Check ==> $line <== \n
-╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ──╮\n"
+Check ==> $line <== \n${li}
+╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ──╮${n}\n"
   #printf " $zaehler  "
   #[ $zaehler -eq 10 -o $zaehler -eq 20 -o $zaehler -eq 30 -o $zaehler -eq 40 -o $zaehler -eq 50 ] && printf "."
   #[ $zaehler -eq 60 -o $zaehler -eq 70 -o $zaehler -eq 80 -o $zaehler -eq 90 -o $zaehler -eq 100 ] && printf "."
@@ -47,11 +55,11 @@ done
 clear ; printf "\n"
 
 cross-analyse $1 $2
-printf "\n
+printf "\n${li}
 ╭────────────────────────────────────────────────╮
-│  Dateien werden getauscht / files are swapped  |
+│  Dateien werden getauscht / files are swapped  │
 ╰────────────────────────────────────────────────╯   
-\n\n"
+\n\n${n}"
 
 cross-analyse $2 $1
 
