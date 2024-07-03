@@ -30,7 +30,7 @@ cross-analyse () {
 printf "\n${li}
 ╭─── MD5 Cross Analyse ────────────────────────────────────────────────────────────────────────────────────╮ 
 │  MD5 file Cross-check / Gegen-check    [.] => 50  , [:] => 100 files / Dateien                           │ 
-│  Nicht identische Dateien werden unten angezeigt  / files that are not identical are displayed below.    │ 
+│  Nicht identische Dateien werden unten angezeigt / files that are not identical are displayed below      │ 
 ╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ─╯ ${n}\n"
 cat $1 |while read line
 do 
@@ -54,11 +54,11 @@ done
 printf "\n"
 
 cross-analyse $1 $2
-printf "\n${li}
+printf "\n\n${li}
 ╭────────────────────────────────────────────────╮
 │  Dateien werden getauscht / files are swapped  │
 ╰────────────────────────────────────────────────╯   
-\n${n}"
+${n}"
 
 cross-analyse $2 $1
 
