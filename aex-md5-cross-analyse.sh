@@ -37,13 +37,13 @@ do
   gesamtzaehler=$gesamtzaehler+1
   zaehler=$zaehler+1
   nurmd5=$(echo $line|cut -c-32)
-  grep -q $nurmd5 $2 || printf "
+  grep -q $nurmd5 $2 || ( gesamtzaehler=0 ; printf "
 Check ==> $line <== \n${li}
-╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ──╮${n}\n"
-  #printf " $zaehler  "
-  #[ $zaehler -eq 10 -o $zaehler -eq 20 -o $zaehler -eq 30 -o $zaehler -eq 40 -o $zaehler -eq 50 ] && printf "."
-  #[ $zaehler -eq 60 -o $zaehler -eq 70 -o $zaehler -eq 80 -o $zaehler -eq 90 -o $zaehler -eq 100 ] && printf "."
-  #[ $zaehler -eq 100 ] && printf "\b\b\b\b\b\b\b\b\b\b:"
+╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ──╮${n}\n" )
+  ##printf " $zaehler  "
+  ##[ $zaehler -eq 10 -o $zaehler -eq 20 -o $zaehler -eq 30 -o $zaehler -eq 40 -o $zaehler -eq 50 ] && printf "."
+  ##[ $zaehler -eq 60 -o $zaehler -eq 70 -o $zaehler -eq 80 -o $zaehler -eq 90 -o $zaehler -eq 100 ] && printf "."
+  ##[ $zaehler -eq 100 ] && printf "\b\b\b\b\b\b\b\b\b\b:"
   [ $zaehler -eq 50 ] && printf "."
   [ $zaehler -eq 100 ] && printf "\b:"
   [ $zaehler -eq 100 ] && zaehler=0
