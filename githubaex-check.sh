@@ -6,29 +6,50 @@ b="\033[34m"
 hb="\033[36m"
 li="\033[35m"
 n="\033[m\017"
+WAIT () { kreisel b $1 2>/dev/null || sleep $1; }
+usage ()
+{
+        printf "\n${g}
+╭──── Usage  ───────────────────────────────────────────────────────────────╮
+│                                                                           │
+│ $(basename $0 ) GIT-Folder/GIT-Ordner [difftool]           $(tput hpa 75) │ 
+│                                                                           │
+│ ${n}e.g. $(basename $0 ) ~/githubaexx/ difftool ${g}       $(tput hpa 75) │ 
+╰───────────────────────────────────────────────────────────────────────────╯"
+}
+tput cup 0 0
+tput ed
 if [ $# -lt 1 ]
   then
-	  printf "\n${g} $0 GIT-Folder/GIT-Ordner [-m]  # -m=difftool (meld) => Use from config ${n}\n\n e.g. $0 ~/githubaexx/ [-m]\n\n"
+          usage;echo
   exit 1
 fi
 if [ $# -lt 2 ]
   then
-	  printf "\n${g} $0 GIT-Folder/GIT-Ordner [-m]  # -m=difftool (meld) => Use from config ${n}\n\n e.g. $0 ~/githubaexx/ [-m]\n\n"
+          usage
 fi
-[ "$2" = "-m" ] && DIFF=difftool 
-echo $DIFF
+[ "$2" = "difftool" ] && DIFF=difftool 
 ask () {
-printf "${li}"
-read -pWeiter?,continue?
+printf "
+╭──── Weiter? / continue? ──────────────────────────────────────────────────╮
+│                        [Eingabe/Enter/Return] oder/or [Strg]/[Ctrl] + [C] │
+╰───────────────────────────────────────────────────────────────────────────╯"
+read
 printf "${n}"
 }
 aexgitdiff () { 
 DIFF1="git diff" ; DIFF2="git diff main origin/main"
 DIFF1A="git $DIFF" ; DIFF2A="git $DIFF main origin/main"
-printf "\n${g}====[ $DIFF1 ]=====================\n${n}"
+printf "${n}\r
+╭───────────────────────────────────────────────────────────────
+╰──── git diff 
+$DIFF1 ${n}"
 $DIFF1
 [ -n "$DIFF" ] && $DIFF1A
-printf "${g}====[ $DIFF2 ]====\n${n}" 
+printf "${n}\r
+╭───────────────────────────────────────────────────────────────
+╰──── git diff main origin/main 
+$DIFF2 ${n}" 
 $DIFF2
 [ -n "$DIFF" ] && $DIFF2A
 }
@@ -46,41 +67,49 @@ if [ -d $1 ]
  then
   cd $1
  else
-  printf "\n${r} cd $1 => failed , fehlgeschlagen!  ${n}\n\n"
+  printf "\n${g} cd $1 => failed , fehlgeschlagen!  ${n}\n\n"
   exit 1
 fi
-ask
+#ask
+WAIT 5
 #
 for repo in `ls`
 do
  cd $repo
- printf "\n${r}========[ $repo ]====================================\n${n}"
- printf "${li}======[ Local   <==   REMOTE ]==============\n"
- printf "\n${STATUS}:  ${n}" ; ${STATUS}
- printf "\n${FETCH}:  ${n}"  ; ${FETCH}
- aexgitdiff
-# if [ -n "$(git status --porcelain)" ]; then
+ printf "${g}\r
+╭───────────────────────────────────────────────────────────────────────────╮
+│  $repo                                                     $(tput hpa 75) │                                                                                   
+╰───────────────────────────────────────────────────────────────────────────╯
+${li}
+╭───────────────────────────────────────────────────────────────
+╰────  Local  <──  REMOTE 
+${STATUS}: 
+" ; ${STATUS} |sed -e '/^$/d' ; printf "
+${FETCH}: 
+" ; ${FETCH} ; aexgitdiff ; printf "
+"
  if [ -n "$(git status|grep git\ pull )" ]; then
-     echo "there are changes";
-     #aexgitdiff
-     printf "\n${MERGE}:  ${n}"  ; ask ; ${MERGE}
+     printf "there are changes";
+     printf "${MERGE}:  ${n}"  ; ask ; ${MERGE}
    else
-     echo "no changes";
+     printf "no changes: pull";
  fi
- printf "${li}======[ LOCAL   ==>   Remote ]==============\n${n}"
- printf "\n${li}${STATUS}:  ${n}" ; ${STATUS}
+ printf "${li}\r
+╭───────────────────────────────────────────────────────────────
+╰───  LOCAL  ──>  Remote 
+${STATUS}:
+" ; ${STATUS} |sed -e '/^$/d' ; printf "${n}"
  if [ -n "$(git status --porcelain)" ]; then
      echo "there are changes";
-     #aexgitdiff
      printf "\n${ADD}:  ${n}"  ; ask ; ${ADD}
      printf "\n${COMMIT}:  ${n}" ; ask ; gitcommit
      aexgitdiff
      printf "\n${PUSH}:  ${n}" ; ask ; ${PUSH}
    else
-     echo "no changes";
+   printf "\nno changes PUSH\n";
  fi
  cd ..
- countdown g 1 2>/dev/null || sleep 2
+ #countdown g 1 2>/dev/null || sleep 2
 done
 printf "\n${n}"
 #
