@@ -9,7 +9,7 @@ n="\033[m\017"
 WAIT () { kreisel b $1 2>/dev/null || sleep $1; }
 usage ()
 {
-        printf "\n${g}
+	printf "\n${g}
 ╭──── Usage  ───────────────────────────────────────────────────────────────╮
 │                                                                           │
 │ $(basename $0 ) GIT-Folder/GIT-Ordner [difftool]           $(tput hpa 75) │ 
@@ -21,12 +21,12 @@ tput cup 0 0
 tput ed
 if [ $# -lt 1 ]
   then
-          usage;echo
+	  usage;echo
   exit 1
 fi
 if [ $# -lt 2 ]
   then
-          usage
+	  usage
 fi
 [ "$2" = "difftool" ] && DIFF=difftool 
 ask () {
