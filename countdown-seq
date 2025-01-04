@@ -1,0 +1,29 @@
+#!/bin/bash
+ro="\033[31m"
+gr="\033[32m"
+n="\033[m\017"
+
+countdown () {
+typeset -i zaehler
+echo
+for zaehler in `seq 1 ${1} `
+do
+  echo -en "\r${ro} -| ${zaehler} |- ${n}"
+  [ -z $2 ] && sleep 1 || sleep $2
+done
+echo -en "\r -|   |- " ; sleep 0.3
+echo -en "\r   | |   " ; sleep 0.1
+echo -en "\r    |    " ; sleep 0.3
+echo -en "\r         "
+echo -e "\n${n}" ; sleep 0.1
+}
+
+#### MAIN ####
+if [ $# -lt 1 ]
+  then
+  echo -e "${ro}Abbruch - Bitte Zahl angeben"
+  echo -e "${gr} $0 <ZAHL> [PAUSE] ${n}"
+  exit 1
+fi
+countdown $1 $2
+

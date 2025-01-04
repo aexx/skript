@@ -12,9 +12,9 @@ usage ()
 	printf "\n${g}
 ╭──── Usage  ───────────────────────────────────────────────────────────────╮
 │                                                                           │
-│ $(basename $0 ) GIT-Folder/GIT-Ordner [difftool]           $(tput hpa 75) │ 
+│ $(basename $0 ) GIT-Folder/GIT-Ordner [difftool]          $( tput hpa 75) │ 
 │                                                                           │
-│ ${n}e.g. $(basename $0 ) ~/githubaexx/ difftool ${g}       $(tput hpa 75) │ 
+│ ${n}e.g. $(basename $0 ) ~/githubaexx/ difftool ${g}      $( tput hpa 75) │ 
 ╰───────────────────────────────────────────────────────────────────────────╯"
 }
 tput cup 0 0

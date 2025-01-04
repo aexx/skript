@@ -1,0 +1,43 @@
+#!/bin/bash
+ro="\033[31m"
+g="\033[32m"
+gr="\033[37m"
+n="\033[m\017"
+#set -x 
+fa=$ro
+countdown () {
+[ $1 = "g" ] && fa=$gr
+[ $1 = "g" ] && shift
+typeset -i zaehler
+zaehler=$1
+#echo
+while [ $zaehler -ge 0 ]
+do
+  echo -en "\r${fa} -| ${zaehler} |- ${n}"
+  zaehler=$zaehler-1
+  if [ -z $2 ] 
+   then
+    read -sn1 -t1 BLA
+   else
+    read -sn1 -t${2} BLA
+  fi
+  [ $? = 0 ] && zaehler=0
+  [ "${BLA}" = "x" ] && echo ; [ "${BLA}" = "x" ] && exit 1
+  [ "${BLA}" = "q" ] && echo ; [ "${BLA}" = "q" ] && exit 1
+done
+echo -en "\r -|   |- " ; sleep 0.1
+echo -en "\r   | |   " ; sleep 0.1
+echo -en "\r    |    " ; sleep 0.1
+echo -en "\r         "
+echo -en "\n${n}" ; sleep 0.1
+}
+
+#### MAIN ####
+if [ $# -lt 1 ]
+  then
+  echo -e "${ro}Abbruch - Bitte Zahl angeben"
+  echo -e "${g} $0 [g] <ZAHL> [PAUSE]  # g=Grau ${n}"
+  exit 1
+fi
+countdown $1 $2 $3
+
