@@ -18,7 +18,7 @@ hilfe () {
      Grau──╯ │      │        ╰──Zahl fuer Kreiselgeschwindigkeit: 1-9
              │      │
        Blau──╯      ╰──Zaehler fuer Countdown \n 
-  Waehrend des Laufs mit [x] oder [q] abbrechen, oder mit [p] Pause durch setzen des Zaehlers auf 99 
+  Waehrend des Laufs mit [p] Pause durch setzen des Zaehlers auf 99 
   Jede andere Eingabe setzt den Zaehler auf 0 ${n}\n"
   exit 1
 }
@@ -46,10 +46,10 @@ READI () {
     read -sn1 -t0.${1} BLA
   fi
   [ $? = 0 ] && zaehler=0
-  # hat nicht so gut funktioniert x q p 
+  # hat nicht so gut funktioniert x q  
   #[ "${BLA}" = "x" ] && { echo ; exit 1  ; }
   #[ "${BLA}" = "q" ] && { echo ; exit 1  ; }
-  #[ "${BLA}" = "p" ] && { zaehler=99 ; }
+  [ "${BLA}" = "p" ] && { zaehler=99 ; }
 }
 while [ $zaehler -gt 0 ]
 do
@@ -59,11 +59,6 @@ do
   echo -en "\r${fa}[$Z3] ${n}" ; READI $2
   echo -en "\r${fa}[$Z4] ${n}" ; READI $2
   [ $? = 0 ] && zaehler=0
-  # WARUM HIER $BLA ?
-  #tput cup 1000 40 ; echo -en "${gr}${BLA} ${zaehler}    \r${fa}"
-  #[ $zaehler == 0 ] && tput cup 1000 40 ; echo -en "${gr}${BLA}               \r${fa}"
-  #tput cup 1000 20 ; echo -en "${gr}${zaehler}    \r${fa}"
-  #[ $zaehler == 0 ] && tput cup 1000 20 ; echo -en "${gr}    \r${fa}"
   tput cup 1000 60 ; echo -en "${gr}${zaehler}    \r${fa}"
   [ $zaehler == 0 ] && tput cup 1000 60 ; echo -en "${gr}    \r${fa}"
 done
