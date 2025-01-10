@@ -40,6 +40,7 @@ zaehler=$zaehler+1
 #Z1="⇑" ; Z2="⇒" ; Z3="⇓" ; Z4="⇐"
 #Z1="|" ; Z2="/" ; Z3="—" ; Z4="\\"
 Z1="⠋" ; Z2="⠙" ; Z3="⠹" ; Z4="⠸" ; Z5="⠼" ; Z6="⠴" ; Z7="⠧" ; Z8="⠇" ; Z9="⠏"
+$lk="⦗" ; $rk="⦘"
 READI () {
   if [ -z $1 ]
    then
@@ -54,21 +55,21 @@ READI () {
 while [ $zaehler -gt 0 ]
 do
   zaehler=$zaehler-1
-  echo -en "\r${fa} $Z1  ${n}" ; READI $2
-  echo -en "\r${fa} $Z2  ${n}" ; READI $2
-  echo -en "\r${fa} $Z3  ${n}" ; READI $2
-  echo -en "\r${fa} $Z4  ${n}" ; READI $2
-  echo -en "\r${fa} $Z5  ${n}" ; READI $2
-  echo -en "\r${fa} $Z6  ${n}" ; READI $2
-  echo -en "\r${fa} $Z7  ${n}" ; READI $2
-  echo -en "\r${fa} $Z8  ${n}" ; READI $2
-  echo -en "\r${fa} $Z9  ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z1 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z2 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z3 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z4 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z5 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z6 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z7 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z8 ${rk} ${n}" ; READI $2
+  echo -en "\r${fa}${lk} $Z9 ${rk} ${n}" ; READI $2
   [ $? = 0 ] && zaehler=0
   tput cup 1000 60 ; echo -en "${gr}${zaehler}    \r${fa}"
   [ $zaehler == 0 ] && tput cup 1000 60 ; echo -en "${gr}    \r${fa}"
 done
-echo -en "\r ⠋  " ; sleep 0.1
-echo -en "\r ⠙  " ; sleep 0.1
+echo -en "\r${lk} ⠋ ${rk} " ; sleep 0.1
+echo -en "\r${lk} ⠙ ${rk} " ; sleep 0.1
 echo -en "\r •  " ; sleep 0.1
 echo -en "\r ·  " ; sleep 0.2
 echo -en "\r      \n${n}" ; sleep 0.2
