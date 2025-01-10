@@ -14,16 +14,17 @@ hilfe () {
   echo -e "${gn} 
   $0 [g|b] <Zaehler> [Dauer]  # g=Grau b=Blau \n 
   kreisel [g|b] <Zaehler> [Dauer]  # g=Grau b=Blau 
-           | |      |        |
-     Grau _| |      |        |_ Zahl fuer Kreiselgeschwindigkeit: 1-9
-             |      |
-       Blau _|      |_ Zaehler fuer Countdown \n 
+           │ │      │        │
+     Grau──╯ │      │        ╰──Zahl fuer Kreiselgeschwindigkeit: 1-9
+             │      │
+       Blau──╯      ╰──Zaehler fuer Countdown \n 
   Waehrend des Laufs mit [x] oder [q] abbrechen, oder mit [p] Pause durch setzen des Zaehlers auf 99 
   Jede andere Eingabe setzt den Zaehler auf 0 ${n}\n"
   exit 1
 }
 #
 countdown () {
+tput civis
 [ $1 = "g" ] && fa=$gr
 [ $1 = "g" ] && shift
 [ $1 = "b" ] && fa=$bl
@@ -63,8 +64,8 @@ do
   #[ $zaehler == 0 ] && tput cup 1000 40 ; echo -en "${gr}${BLA}               \r${fa}"
   #tput cup 1000 20 ; echo -en "${gr}${zaehler}    \r${fa}"
   #[ $zaehler == 0 ] && tput cup 1000 20 ; echo -en "${gr}    \r${fa}"
-  tput cup 1000 80 ; echo -en "${gr}${zaehler}    \r${fa}"
-  [ $zaehler == 0 ] && tput cup 1000 80 ; echo -en "${gr}    \r${fa}"
+  tput cup 1000 60 ; echo -en "${gr}${zaehler}    \r${fa}"
+  [ $zaehler == 0 ] && tput cup 1000 60 ; echo -en "${gr}    \r${fa}"
 done
 echo -en "\r[|] " ; sleep 0.1
 echo -en "\r[ ] " ; sleep 0.1
@@ -72,6 +73,7 @@ echo -en "\r |  " ; sleep 0.1
 echo -en "\r •  " ; sleep 0.1
 echo -en "\r ·  " ; sleep 0.1
 echo -en "\r      \n${n}" ; sleep 0.1
+tput cnorm
 }
 
 #### MAIN ####
