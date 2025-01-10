@@ -40,11 +40,12 @@ zaehler=$zaehler+1
 #Z1="⇑" ; Z2="⇒" ; Z3="⇓" ; Z4="⇐"
 #Z1="|" ; Z2="/" ; Z3="—" ; Z4="\\"
 Z1="⠋" ; Z2="⠙" ; Z3="⠹" ; Z4="⠸" ; Z5="⠼" ; Z6="⠴" ; Z7="⠧" ; Z8="⠇" ; Z9="⠏"
-lk="⦗" ; rk="⦘"
+#lk="⦗" ; rk="⦘"
+lk="⎡" ; rk="⎦"
 READI () {
   if [ -z $1 ]
    then
-    read -sn1 -t0.2 BLA
+    read -sn1 -t0.1 BLA
    else
     read -sn1 -t0.${1} BLA
   fi
@@ -70,9 +71,11 @@ do
 done
 echo -en "\r${lk}⠋${rk} " ; sleep 0.1
 echo -en "\r${lk}⠙${rk} " ; sleep 0.1
-echo -en "\r •  " ; sleep 0.1
+echo -en "\r${lk}⠘${rk} " ; sleep 0.1
+echo -en "\r${lk}·${rk} " ; sleep 0.1
+echo -en "\r •  " ; sleep 0.2
 echo -en "\r ·  " ; sleep 0.2
-echo -en "\r      \n${n}" ; sleep 0.2
+echo -en "\r      \n${n}" ; sleep 0.1
 tput cnorm
 }
 
