@@ -1,0 +1,84 @@
+#!/bin/bash
+ro="\033[31m"
+gn="\033[32m"
+gr="\033[37m"
+bl="\033[34m"
+n="\033[m\017"
+#set -x
+fa=$ro
+#typeset -i COLUMNS NCOLUMNS
+#NCOLUMNS=$COLUMNS-6
+#
+hilfe () {
+  echo -e "\n${ro}Abbruch - Bitte Zaehler angeben"
+  echo -e "${gn} 
+  $0 [g|b] <Zaehler> [Dauer]  # g=Grau b=Blau \n 
+  kreisel [g|b] <Zaehler> [Dauer]  # g=Grau b=Blau 
+           │ │      │        │
+     Grau──╯ │      │        ╰──Zahl fuer Kreiselgeschwindigkeit: 1-9
+             │      │
+       Blau──╯      ╰──Zaehler fuer Countdown \n 
+  Waehrend des Laufs mit [x] oder [q] abbrechen, oder mit [p] Pause durch setzen des Zaehlers auf 99 
+  Jede andere Eingabe setzt den Zaehler auf 0 ${n}\n"
+  exit 1
+}
+#
+countdown () {
+tput civis
+[ $1 = "g" ] && fa=$gr
+[ $1 = "g" ] && shift
+[ $1 = "b" ] && fa=$bl
+[ $1 = "b" ] && shift
+typeset -i zaehler
+zaehler=$1
+zaehler=$zaehler+1
+# · • ∅ ° - —
+#  ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠧ ⠇ ⠏ ⠋  
+#Z1="-" ; Z2="\\" ; Z3="|" ; Z4="/"
+#Z1="°" ; Z2="•" ; Z3="·" ; Z4="."
+#Z1="+" ; Z2="×" ; Z3="+" ; Z4="×"
+#Z1="⇑" ; Z2="⇒" ; Z3="⇓" ; Z4="⇐"
+#Z1="|" ; Z2="/" ; Z3="—" ; Z4="\\"
+Z1="⠋" ; Z2="⠙" ; Z3="⠹" ; Z4="⠸" ; Z5="⠼" ; Z6="⠴" ; Z7="⠧" ; Z8="⠇" ; Z9="⠏"
+READI () {
+  if [ -z $1 ]
+   then
+    read -sn1 -t0.2 BLA
+   else
+    read -sn1 -t0.${1} BLA
+  fi
+  [ $? = 0 ] && zaehler=0
+  # hat nicht so gut funktioniert x q 
+  [ "${BLA}" = "p" ] && { zaehler=99 ; }
+}
+while [ $zaehler -gt 0 ]
+do
+  zaehler=$zaehler-1
+  echo -en "\r${fa} $Z1  ${n}" ; READI $2
+  echo -en "\r${fa} $Z2  ${n}" ; READI $2
+  echo -en "\r${fa} $Z3  ${n}" ; READI $2
+  echo -en "\r${fa} $Z4  ${n}" ; READI $2
+  echo -en "\r${fa} $Z5  ${n}" ; READI $2
+  echo -en "\r${fa} $Z6  ${n}" ; READI $2
+  echo -en "\r${fa} $Z7  ${n}" ; READI $2
+  echo -en "\r${fa} $Z8  ${n}" ; READI $2
+  echo -en "\r${fa} $Z9  ${n}" ; READI $2
+  [ $? = 0 ] && zaehler=0
+  tput cup 1000 60 ; echo -en "${gr}${zaehler}    \r${fa}"
+  [ $zaehler == 0 ] && tput cup 1000 60 ; echo -en "${gr}    \r${fa}"
+done
+echo -en "\r ⠋  " ; sleep 0.1
+echo -en "\r ⠙  " ; sleep 0.1
+echo -en "\r •  " ; sleep 0.1
+echo -en "\r ·  " ; sleep 0.2
+echo -en "\r      \n${n}" ; sleep 0.2
+tput cnorm
+}
+
+#### MAIN ####
+tput cup 1000 40 ; echo -en "${gr} \r"
+if [ $# -lt 1 ]
+  then
+   hilfe
+fi
+countdown $1 $2 $3
