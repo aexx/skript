@@ -80,7 +80,7 @@ echo -en "\r${lk}·${rk} " ; sleep 0.1
 echo -en "\r •  " ; sleep 0.2
 echo -en "\r ·  " ; sleep 0.2
 echo -en "\r      \n${n}" ; sleep 0.1
-#tput cnorm
+tput cnorm
 }
 
 #### MAIN ####
