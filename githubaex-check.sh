@@ -17,8 +17,8 @@ usage ()
 │ ${n}e.g. $(basename $0 ) ~/githubaexx/ difftool ${g}      $( tput hpa 75) │
 ╰───────────────────────────────────────────────────────────────────────────╯"
 }
-tput cup 0 0
-tput ed
+#tput cup 0 0
+#tput ed
 if [ $# -lt 1 ]
   then
 	  usage;echo
