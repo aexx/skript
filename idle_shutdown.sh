@@ -4,6 +4,9 @@
 # Install sudo apt-get install xprintidle
 # Put this script into autostart:
 
+typeset -i idletime
+typeset -i idle
+
 idletime=$((1000*60*60*2)) # 2 hours in milliseconds
 
 while true; do
