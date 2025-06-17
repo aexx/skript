@@ -8,10 +8,10 @@ Skript Sammlung, Script collection
 
 
 .Some Infos ...
-[options="header,footer"]
+[options="header,footer,width="30%""]
 |=======================
 | Script                             | Screenshot                                      | More Info ...
-| link:dsl-check.sh[dsl-check.sh]    | link:DSL-Check.png[Screenshot DSL-Check]                 | Script to Check DSL outages/ Skript um DSL Ausfaeälle zu checken 
+| link:dsl-check.sh[dsl-check.sh]    | link:DSL-Check.png[DSL-Check]                   | Script to Check DSL outages/ Skript um DSL Ausfaeälle zu checken 
 | .                                  | .                                               | .
 | .                                  | .                                               | .
 | .                                  | .                                               | .
