@@ -3,9 +3,26 @@ skript
 :Author:    Alex Schilling
 :Email:     aexx at gmx.net
 
+
 Skript Sammlung, Script collection
 
-image::sunset.jpg[Sunset]
+
+.Some Infos ...
+[options="header,footer"]
+|=======================
+| Script                             | Screenshot                                      | More Info ...
+| link:dsl-check.sh[dsl-check.sh]    | link:DSL-Check.png[Screenshot DSL-Check]                 | Script to Check DSL outages/ Skript um DSL Ausfaeälle zu checken 
+| .                                  | .                                               | .
+| .                                  | .                                               | .
+| .                                  | .                                               | .
+| .                                  | .                                               | .
+|=======================
+
+
+
+==== Some Screenshots ...
+
+image::DSL-Check.png[Example: dsl-check.sh]
 
 
 
