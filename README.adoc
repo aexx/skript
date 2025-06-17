@@ -11,7 +11,7 @@ Skript Sammlung, Script collection
 [options="header,footer,width="30%""]
 |=======================
 | Script                             | Screenshot                                                                    | More Info ...
-| link:dsl-check.sh[dsl-check.sh]    | image:DSL-Check.png[Example: dsl-check.sh,width=128,link="DSL-Check.png"]     | Script to Check DSL outages/ Skript um DSL Ausfaeälle zu checken 
+| link:dsl-check.sh[dsl-check.sh]    | image:DSL-Check.png[Example: dsl-check.sh,width=128,link="DSL-Check.png"]     | Script to Check DSL outages/ Skript um DSL Abbrueche zu checken 
 | .                                  | .                                                                             | .
 | .                                  | .                                                                             | .
 | .                                  | .                                                                             | .
