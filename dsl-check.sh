@@ -16,7 +16,7 @@ tageszaehler=0
 #sleep=0.001
 sleep=60
 LOCK=/tmp/`basename $0`.lock
-[ -f $LOCK ] && { printf "\n\n\n${r}LOCK: $LOCK - Pruefen, ob Skript schon laeuft${n} \n\n\n" ; exit 1  ; }
+[ -f $LOCK ] && { printf "\n${r}LOCK: $LOCK - dsl-check is running/ laeuft${n} \n" ; exit 1  ; }
 touch $LOCK
 printf "
      ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
