@@ -1,11 +1,23 @@
 #!/bin/bash
 
+r="\033[31m"
+g="\033[32m"
+gr="\033[37m"
+b="\033[34m"
+hb="\033[36m"
+li="\033[35m"
+n="\033[m\017"
+bold=$(tput bold)
+norm=$(tput sgr0)
 typeset -i zaehler gesamtzaehler tageszaehler
 zaehler=0
 gesamtzaehler=0
 tageszaehler=0
 #sleep=0.001
 sleep=60
+LOCK=/tmp/`basename $0`.lock
+[ -f $LOCK ] && { printf "\n\n\n${r}LOCK: $LOCK - Pruefen, ob Skript schon laeuft${n} \n\n\n" ; exit 1  ; }
+
 printf "
      ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
      │
