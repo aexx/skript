@@ -15,7 +15,8 @@ gesamtzaehler=0
 tageszaehler=0
 #sleep=0.001
 sleep=60
-LOCK=/tmp/`basename $0`.lock
+LOCK=/dev/shm/`basename $0`.lock
+LOG=/dev/shm/`basename $0`.log
 [ -f $LOCK ] && { printf "\n${r}LOCK: $LOCK - dsl-check is running/ laeuft${n} \n" ; exit 1  ; }
 touch $LOCK
 printf "
@@ -23,7 +24,7 @@ printf "
      │
      ╰──────────────────────30─Min╮───────────────────────60─Min╮
                                   │                             │
-$(date +%H:%M)" 
+$(date +%H:%M)" >> $LOG
 while true
 do
  tageszaehler=$tageszaehler+1
@@ -32,20 +33,20 @@ do
  if ping -c1 google.com &> /dev/null
  #if true &> /dev/null
   then
-  printf "."
+  printf "." >> $LOG
  else
-  printf "X"
+  printf "X" >> $LOG
  fi
- [ $zaehler -eq 10 ] && printf "\b:"
+ [ $zaehler -eq 10 ] && printf "\b:" >> $LOG
  [ $zaehler -eq 10 ] && zaehler=0
- [ $gesamtzaehler -eq 60 ] && printf "\n$(date +%H:%M)"
+ [ $gesamtzaehler -eq 60 ] && printf "\n$(date +%H:%M)" >> $LOG
  [ $gesamtzaehler -eq 60 ] && gesamtzaehler=0
- [ $tageszaehler -eq 1440 ] && printf "
+ [ $tageszaehler -eq 1440 ] && printf " >> $LOG
      ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
      │
      ╰──────────────────────30─Min╮───────────────────────60─Min╮
                                   │                             │
-$(date +%H:%M)"
+$(date +%H:%M)" >> $LOG
  [ $tageszaehler -eq 1440 ] && tageszaehler=0
  sleep $sleep
 done
