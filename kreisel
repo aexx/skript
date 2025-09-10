@@ -25,6 +25,7 @@ hilfe () {
 #
 countdown () {
 tput civis
+tput bold
 [ $1 = "g" ] && fa=$gr
 [ $1 = "g" ] && shift
 [ $1 = "b" ] && fa=$bl
@@ -39,6 +40,7 @@ zaehler=$zaehler+1
 #Z1="⇑" ; Z2="⇒" ; Z3="⇓" ; Z4="⇐"
 Z1="|" ; Z2="/" ; Z3="—" ; Z4="\\"
 READI () {
+  tput bold
   if [ -z $1 ]
    then
     read -sn1 -t0.2 BLA
@@ -53,12 +55,14 @@ READI () {
 }
 while [ $zaehler -gt 0 ]
 do
+  tput bold
   zaehler=$zaehler-1
   echo -en "\r${fa}[$Z1] ${n}" ; READI $2
   echo -en "\r${fa}[$Z2] ${n}" ; READI $2
   echo -en "\r${fa}[$Z3] ${n}" ; READI $2
   echo -en "\r${fa}[$Z4] ${n}" ; READI $2
   [ $? = 0 ] && zaehler=0
+  tput bold
   tput cup 1000 60 ; echo -en "${gr}${zaehler}    \r${fa}"
   [ $zaehler == 0 ] && tput cup 1000 60 ; echo -en "${gr}    \r${fa}"
 done
