@@ -44,11 +44,15 @@ do
  [ $gesamtzaehler -eq 60 ] && gesamtzaehler=0
  #
  # Log kopieren
- zielordner=/media/fritz-smb/T7/alex/bigaex/Sicherung/RaspberryPi/
- zeilen=$(wc -l ${LOG}|cut -d " " -f1)
- [ ${zeilen} -gt 555 ] && [ -d ${zielordner} ] && cp $LOG ${zielordner}/dsl-check.sh_$(date +%F).log
+ log_copy ()
+ {
+   zielordner=/media/fritz-smb/T7/alex/bigaex/Sicherung/RaspberryPi/
+   zeilen=$(wc -l ${LOG}|cut -d " " -f1)
+   [ ${zeilen} -gt 555 ] && [ -d ${zielordner} ] && cp $LOG ${zielordner}/dsl-check.sh_$(date +%F).log && mv $LOG ${LOG}_moved_$(date +%F)
+ }
  #
-  [ $tageszaehler -eq 1440 ] && printf " >> $LOG
+ [ $tageszaehler -eq 1440 ] && log_copy
+ [ $tageszaehler -eq 1440 ] && printf " >> $LOG
      ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
      │
      ╰──────────────────────30─Min╮───────────────────────60─Min╮
