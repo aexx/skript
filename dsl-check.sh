@@ -9,7 +9,7 @@ li="\033[35m"
 n="\033[m\017"
 bold=$(tput bold)
 norm=$(tput sgr0)
-typeset -i zaehler gesamtzaehler tageszaehler
+typeset -i zaehler gesamtzaehler tageszaehler zeilen
 zaehler=0
 gesamtzaehler=0
 tageszaehler=0
@@ -17,6 +17,7 @@ tageszaehler=0
 sleep=60
 LOCK=/dev/shm/`basename $0`.lock
 LOG=/dev/shm/`basename $0`.log
+
 [ -f $LOCK ] && { printf "\n${r}LOCK: $LOCK - dsl-check is running/ laeuft${n} \n" ; exit 1  ; }
 touch $LOCK
 printf "
@@ -41,7 +42,13 @@ do
  [ $zaehler -eq 10 ] && zaehler=0
  [ $gesamtzaehler -eq 60 ] && printf "\n$(date +%H:%M)" >> $LOG
  [ $gesamtzaehler -eq 60 ] && gesamtzaehler=0
- [ $tageszaehler -eq 1440 ] && printf " >> $LOG
+ #
+ # Log kopieren
+ zielordner=/media/fritz-smb/T7/alex/bigaex/Sicherung/RaspberryPi/
+ zeilen=$(wc -l ${LOG}|cut -d " " -f1)
+ [ ${zeilen} -gt 555 ] && [ -d ${zielordner} ] && cp $LOG ${zielordner}/dsl-check.sh_$(date +%F).log
+ #
+  [ $tageszaehler -eq 1440 ] && printf " >> $LOG
      ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
      │
      ╰──────────────────────30─Min╮───────────────────────60─Min╮
