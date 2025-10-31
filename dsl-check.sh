@@ -17,15 +17,21 @@ tageszaehler=0
 sleep=60
 LOCK=/dev/shm/`basename $0`.lock
 LOG=/dev/shm/`basename $0`.log
+# ┌──┬──┐
+# │  │  │
+# ├──┼──┤
+# │  │  │
+# └──┴──┘
+HEADER="
+     ┌────┘$(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
+     │
+     └─────────────────────30─Min─┬─────────────────────60─Min──┐
+                                  │                             │
+$(date +%H:%M)" 
 
 [ -f $LOCK ] && { printf "\n${r}LOCK: $LOCK - dsl-check is running/ laeuft${n} \n" ; exit 1  ; }
 touch $LOCK
-printf "
-     ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
-     │
-     ╰──────────────────────30─Min╮───────────────────────60─Min╮
-                                  │                             │
-$(date +%H:%M)" >> $LOG
+printf "$HEADER" >> $LOG
 while true
 do
  tageszaehler=$tageszaehler+1
@@ -52,12 +58,7 @@ do
  }
  #
  [ $tageszaehler -eq 1440 ] && log_copy
- [ $tageszaehler -eq 1440 ] && printf " >> $LOG
-     ╭───⦿ $(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
-     │
-     ╰──────────────────────30─Min╮───────────────────────60─Min╮
-                                  │                             │
-$(date +%H:%M)" >> $LOG
+ [ $tageszaehler -eq 1440 ] && printf "$HEADER" >> $LOG
  [ $tageszaehler -eq 1440 ] && tageszaehler=0
  sleep $sleep
 done
