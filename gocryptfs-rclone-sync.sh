@@ -57,7 +57,7 @@ printf "${g}
 │ gocryptfs-Folder:   ${n} $3 ${g} $(tput hpa 71) │
 │ rclone-Remote-Path: ${n} $4 ${g} $(tput hpa 71) │
 ╰───────────────────────────────────────────────────────────────────────╯ "
-printf "${g} $(tput hpa 55)┬\n$(tput hpa 55)│
+printf "${g} $(tput hpa 62)┬\n$(tput hpa 62)│
 ╭───────┐Mount gocryptfs-Folder┌──────────────────────────────╯
 │${n}\n"
 [ -s ${2}/.gocryptfs.reverse.conf ] || printf "${r}\n  ──────┤!!! Data-Folder NOT OK !!!├──────${n}\n"
