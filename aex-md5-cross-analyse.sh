@@ -11,6 +11,7 @@ n="\033[m\017"
 typeset -i zaehler gesamtzaehler
 zaehler=0
 gesamtzaehler=0
+notidentical=/dev/shm/not-identical_$(date +%Y%m%d_%H%M).log
 
 usage () {
 printf "Usage: \n
@@ -27,6 +28,7 @@ if [ $# -ne 2 ]
 fi
 
 cross-analyse () { 
+
 printf "\n${li}
 ╭──── MD5 Cross Analyse ───────────────────────────────────────────────────────────────────────────────────╮ 
 │  MD5 file Cross-check / Gegen-check   [.] => 50  , [:] => 100 files / Dateien                            │ 
@@ -37,9 +39,11 @@ do
   gesamtzaehler=$gesamtzaehler+1
   zaehler=$zaehler+1
   nurmd5=$(echo $line|cut -c-32)
-  grep -q $nurmd5 $2 || ( gesamtzaehler=0 ; printf "
-Check ==> $line <== \n${li}
-╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ──╮${n}\n" )
+  grep -q $nurmd5 $2 || echo "Check ==> $line <== " >> $notidentical
+  grep -q $nurmd5 $2 || printf "x"
+#  grep -q $nurmd5 $2 || ( gesamtzaehler=0 ; printf "
+#Check ==> $line <== \n${li}
+#╰────────╮1000 ──────────────────────────────────╮5000 ────────────────────────────────────────────╮10000 ──╮${n}\n" )
   ##printf " $zaehler  "
   ##[ $zaehler -eq 10 -o $zaehler -eq 20 -o $zaehler -eq 30 -o $zaehler -eq 40 -o $zaehler -eq 50 ] && printf "."
   ##[ $zaehler -eq 60 -o $zaehler -eq 70 -o $zaehler -eq 80 -o $zaehler -eq 90 -o $zaehler -eq 100 ] && printf "."
@@ -50,10 +54,25 @@ Check ==> $line <== \n${li}
   [ $gesamtzaehler -eq 10000 ] && printf "\n"
   [ $gesamtzaehler -eq 10000 ] && gesamtzaehler=0
 done 
+printf "${li}\n\n
+╭──╮Nicht identische Dateien / files that are not identical
+│
+╰─────────╮${n}\n"
 }
 printf "\n"
 
 cross-analyse $1 $2
+
+[ -f $notidentical ] && cat $notidentical
+[ -f $notidentical ] && mv $notidentical ${notidentical}first
+
+printf "${li}\n\n
+╭──╮Seiten tauschen / swap sides ?┌──────────────╁
+│         ╭────────┬─────────╮
+╰─────────┤ ENTER  │ CTRL+C  │
+          ╰────────┴─────────╯"
+read
+
 printf "\n\n${li}
 ╭────────────────────────────────────────────────╮
 │  Dateien werden getauscht / files are swapped  │
@@ -61,5 +80,7 @@ printf "\n\n${li}
 ${n}"
 
 cross-analyse $2 $1
+
+[ -f $notidentical ] && cat $notidentical
 
 printf "\n\n"
