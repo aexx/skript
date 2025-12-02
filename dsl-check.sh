@@ -17,21 +17,23 @@ tageszaehler=0
 sleep=60
 LOCK=/dev/shm/`basename $0`.lock
 LOG=/dev/shm/`basename $0`.log
+tag=$(date +%F)
 # ┌──┬──┐
 # │  │  │
 # ├──┼──┤
 # │  │  │
 # └──┴──┘
-HEADER="
-     ┌────┘$(date +%F)  [.|:]⟾  Ping OK  [X]⟾  Ping FAIL
+header () {
+printf "
+     ┌────┘$tag  [.]⟾  Ping OK  [X]⟾  Ping FAIL
      │
      └─────────────────────30─Min─┬─────────────────────60─Min──┐
-                                  │                             │
 $(date +%H:%M)" 
+}
 
 [ -f $LOCK ] && { printf "\n${r}LOCK: $LOCK - dsl-check is running/ laeuft${n} \n" ; exit 1  ; }
 touch $LOCK
-printf "$HEADER" >> $LOG
+header >> $LOG
 while true
 do
  tageszaehler=$tageszaehler+1
@@ -57,8 +59,9 @@ do
    [ ${zeilen} -gt 555 ] && [ -d ${zielordner} ] && cp $LOG ${zielordner}/dsl-check.sh_$(date +%F).log && mv $LOG ${LOG}_moved_$(date +%F)
  }
  #
+ tag=$(date +%F)
  [ $tageszaehler -eq 1440 ] && log_copy
- [ $tageszaehler -eq 1440 ] && printf "$HEADER" >> $LOG
+ [ $tageszaehler -eq 1440 ] && header >> $LOG
  [ $tageszaehler -eq 1440 ] && tageszaehler=0
  sleep $sleep
 done
