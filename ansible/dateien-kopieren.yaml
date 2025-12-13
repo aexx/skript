@@ -1,0 +1,22 @@
+- hosts: aspix3950
+  become: true
+  tasks:
+    - name: copy multiple items
+      copy: 
+        src: "{{ item.src }}" 
+        dest: "{{ item.dest }}"
+        owner: ok8cp5
+        group: ok8cp5
+      loop:
+        - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh
+          dest: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
+        - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh.desktop
+          dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
+####
+    - name: Ensure scripts are executable
+      file:
+        path: "{{ item.path }}"
+        mode: "0755"
+      loop:
+        - path: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
+#        - path: /home/ok8cp5/loeschmi.sh
