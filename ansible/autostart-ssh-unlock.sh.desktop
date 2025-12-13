@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
+Icon=dialog-scripts
+Name=ssh-unlock.sh
+Type=Application
+X-KDE-AutostartScript=true
