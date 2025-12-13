@@ -1,0 +1,7 @@
+- hosts: aspix3950
+  become: true
+  tasks:
+  - name : Install multiple packages
+    apt: name={{ item }} state=latest update_cache=true
+    loop: [unison-gtk, git, krusader, meld, btop, asciidoc, nmap, screen, krename, wakeonlan, x2goclient, pdftk-java, remmina-plugin-rdp, remmina-plugin-x2go, autokey-qt, autokey-gtk, nala]
+#
