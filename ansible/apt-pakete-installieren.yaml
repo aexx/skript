@@ -1,4 +1,4 @@
-- hosts: aspix3950
+- hosts: '{{ myhosts }}'
   become: true
   tasks:
   - name : Install multiple packages
