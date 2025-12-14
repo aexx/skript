@@ -12,5 +12,5 @@
           regexp: ^alias dfh='df -ah'
         - line: alias psram='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND";\ps aux | sort -rnk 4 | head'
           regexp: ^alias psram='
-        - line: alias gn='gibtsnicht'
-          regexp: ^alias dfh='df -ah'
+        - line: alias ggn='gibtgarsnicht'
+          regexp: ^alias ggn='gibtgarsnicht'
