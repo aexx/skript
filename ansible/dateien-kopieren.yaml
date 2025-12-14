@@ -1,6 +1,11 @@
 - hosts: '{{ myhosts }}'
   become: true
   tasks:
+    - name: Create a directory
+      file:
+        path: /home/ok8cp5/.config/autostart-scripts/
+        state: directory
+####
     - name: copy multiple items
       copy: 
         src: "{{ item.src }}" 
