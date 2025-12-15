@@ -2,15 +2,50 @@
   become: true 
   tasks: 
     - name: Change multiple lines  
-      lineinfile:  
+      #lineinfile:
+      ansible.builtin.lineinfile:
         path: /home/ok8cp5/__.bashrc__Testfile
         backup: true
         line: "{{ item.line }}"
         regexp: "{{ item.regexp }}"
       loop:
+        - line: HISTSIZE=42000
+          regexp: ^HISTSIZE=
+        - line: HISTFILESIZE=84000
+          regexp: ^HISTFILESIZE=
+        - line: HISTTIMEFORMAT='%F %T # '
+          regexp: ^HISTTIMEFORMAT=
+        - line: alias ..='cd ..'
+          regexp: ^alias ..=
         - line: alias dfh='df -ah'
-          regexp: ^alias dfh='df -ah'
+          regexp: ^alias dfh=
+        - line: alias dfm='df -am'
+          regexp: ^alias dfm=
+        - line: alias lt='ls -ltrahF'
+          regexp: ^alias lt=
+        - line: alias h='history 40'
+          regexp: ^alias h=
         - line: alias psram='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND";\ps aux | sort -rnk 4 | head'
-          regexp: ^alias psram='
-        - line: alias ggn='gibtgarsnicht'
-          regexp: ^alias ggn='gibtgarsnicht'
+          regexp: ^alias psram=
+        - line: alias pscpu='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND";\ps aux | sort -rnk 3 | head'
+          regexp: ^alias pscpu=
+        - line: alias rm='rm -iv'
+          regexp: ^alias rm=
+        - line: export GOPATH=$HOME/go
+          regexp: ^export GOPATH=$HOME/
+        - line: export PATH=$HOME/githubaexx/skript:$HOME/bigaex/Aex/githubaexx/skript:$HOME/bigaex/Aex/Unix/Skripts:$GOPATH:$GOPATH/bin:$PATH
+          regexp: ^export PATH=$HOME/
+#        - line: 
+#          regexp: ^
+#        - line: 
+#          regexp: ^
+#        - line: 
+#          regexp: ^
+#        - line: 
+#          regexp: ^
+#        - line: 
+#          regexp: ^
+#
+#        - line: 
+#          regexp: 
+
