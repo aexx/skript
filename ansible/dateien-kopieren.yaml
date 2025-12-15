@@ -17,6 +17,8 @@
           dest: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
         - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh.desktop
           dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
+        - src: ~/githubaexx/skript/ansible/unison.logrotate
+          dest: /etc/logrotate.d/unison    
 ####
     - name: Ensure scripts are executable
       ansible.builtin.file:
