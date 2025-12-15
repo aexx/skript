@@ -13,7 +13,7 @@
           regexp: ^HISTSIZE=
         - line: HISTFILESIZE=84000
           regexp: ^HISTFILESIZE=
-        - line: HISTTIMEFORMAT='%F %T _: '
+        - line: HISTTIMEFORMAT='%F %T | '
           regexp: ^HISTTIMEFORMAT=
         - line: alias ..='cd ..'
           regexp: ^alias ..
