@@ -16,7 +16,7 @@
         - line: HISTTIMEFORMAT='%F %T | '
           regexp: ^HISTTIMEFORMAT=
         - line: alias ..='cd ..'
-          regexp: ^alias ..
+          regexp: ^alias ..='cd
         - line: alias dfh='df -ah'
           regexp: ^alias dfh=
         - line: alias dfm='df -am'
