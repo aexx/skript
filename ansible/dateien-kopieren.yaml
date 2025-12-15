@@ -2,12 +2,12 @@
   become: true
   tasks:
     - name: Create a directory
-      file:
+      ansible.builtin.file:
         path: /home/ok8cp5/.config/autostart-scripts/
         state: directory
 ####
     - name: copy multiple items
-      copy: 
+      ansible.builtin.copy: 
         src: "{{ item.src }}" 
         dest: "{{ item.dest }}"
         owner: ok8cp5
@@ -19,9 +19,21 @@
           dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
 ####
     - name: Ensure scripts are executable
-      file:
+      ansible.builtin.file:
         path: "{{ item.path }}"
         mode: "0755"
       loop:
         - path: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
-#        - path: /home/ok8cp5/loeschmi.sh
+####
+    - name: Create a symbolic links
+      ansible.builtin.file:
+        # src: /file/to/link/to , dest: /path/to/symlink
+        src: '{{ item.src }}'
+        dest: '{{ item.dest }}'
+        owner: foo
+        group: foo
+        state: link
+      loop:
+        - { src: bigaex/Aex/Linux/config/.GraHu, dest: /home/ok8cp5/.GraHu }
+        - { src: bigaex/Aex/Linux/config/.smbcredentials, dest: /home/ok8cp5/.smbcredentials }
+
