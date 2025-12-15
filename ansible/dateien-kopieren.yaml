@@ -3,8 +3,13 @@
   tasks:
     - name: Create a directory
       ansible.builtin.file:
-        path: /home/ok8cp5/.config/autostart-scripts/
+        path: "{{ item.path }}"
+        owner: ok8cp5
+        group: ok8cp5
         state: directory
+      loop:
+        - path: /home/ok8cp5/.config/autostart-scripts/
+        
 ####
     - name: copy multiple items
       ansible.builtin.copy: 
