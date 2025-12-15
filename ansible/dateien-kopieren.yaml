@@ -17,6 +17,14 @@
           dest: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
         - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh.desktop
           dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
+##
+    - name: copy multiple items
+      ansible.builtin.copy: 
+        src: "{{ item.src }}" 
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+      loop:        
         - src: ~/githubaexx/skript/ansible/unison.logrotate
           dest: /etc/logrotate.d/unison    
 ####
