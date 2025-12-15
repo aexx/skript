@@ -30,8 +30,8 @@
         # src: /file/to/link/to , dest: /path/to/symlink
         src: '{{ item.src }}'
         dest: '{{ item.dest }}'
-        owner: foo
-        group: foo
+        owner: ok8cp5
+        group: ok8cp5
         state: link
       loop:
         - { src: bigaex/Aex/Linux/config/.GraHu, dest: /home/ok8cp5/.GraHu }
