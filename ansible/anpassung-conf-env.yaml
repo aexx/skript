@@ -33,8 +33,8 @@
           regexp: ^alias rm=
         - line: export GOPATH=$HOME/go
           regexp: ^export GOPATH=$HOME/
-        - line: export PATH=$HOME/githubaexx/skript:$HOME/bigaex/Aex/githubaexx/skript:$HOME/bigaex/Aex/Unix/Skripts:$GOPATH:$GOPATH/bin:$PATH
-          regexp: ^export PATH=$HOME/
+        - line: export PATH=$PATH:$HOME/githubaexx/skript:$HOME/bigaex/Aex/githubaexx/skript:$HOME/bigaex/Aex/Unix/Skripts:$GOPATH:$GOPATH/bin
+          regexp: ^export PATH=
 #        - line: 
 #          regexp: ^
 #        - line: 
