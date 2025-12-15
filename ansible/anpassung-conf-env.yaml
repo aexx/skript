@@ -42,11 +42,6 @@
         path: /home/ok8cp5/__.bashrc__Testfile
         marker: "# {mark} ANSIBLE MANAGED BLOCK "
         block: |
-          PS1="\[\033[31m\]\j \u@\h\[\033[37m\]:\w/ \D{%Y-%m-%d} \t \n\[\033[31m\]\$ \[\033[39m\]" #rotgrau
-          PS1="\[\033[32m\]\j \u@\h\[\033[37m\]:\w/ \D{%Y-%m-%d} \t \n\[\033[32m\]\$ \[\033[39m\]" #gruengrau
-          PS1="\[\033[34m\]\j \u@\h\[\033[37m\]:\w/ \D{%Y-%m-%d} \t \n\[\033[34m\]\$ \[\033[39m\]" #blaugrau
-          PS1="\[\033[35m\]\j \u@\h\[\033[37m\]:\w/ \D{%Y-%m-%d} \t \n\[\033[35m\]\$ \[\033[39m\]" #violettgrau
-          PS1="\[\033[36m\]\j \u@\h\[\033[37m\]:\w/ \D{%Y-%m-%d} \t \n\[\033[36m\]\$ \[\033[39m\]" #hellblaugrau
           echo "
           Infos (Ansible) aus der .bashrc:
           screen -ls
