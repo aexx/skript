@@ -1,4 +1,5 @@
-/home/*/.unison/unison.log {
+/home/ok8cp5/.unison/unison.log {
+        su ok8cp5 ok8cp5
         monthly
         rotate 12
         compress
