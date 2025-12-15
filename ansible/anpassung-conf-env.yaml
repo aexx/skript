@@ -4,7 +4,7 @@
     - name: Change multiple lines  
       #lineinfile:
       ansible.builtin.lineinfile:
-        path: /home/ok8cp5/__.bashrc__Testfile
+        path: /home/ok8cp5/.bashrc
         backup: true
         line: "{{ item.line }}"
         regexp: "{{ item.regexp }}"
@@ -39,7 +39,7 @@
 #          regexp: ^
     - name: Insert/Update text block
       ansible.builtin.blockinfile:
-        path: /home/ok8cp5/__.bashrc__Testfile
+        path: /home/ok8cp5/.bashrc
         marker: "# {mark} ANSIBLE MANAGED BLOCK "
         block: |
           echo "
