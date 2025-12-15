@@ -38,14 +38,14 @@
 #        - line: 
 #          regexp: ^
     - name: Insert/Update text block
-        ansible.builtin.blockinfile:
-          path: /home/ok8cp5/__.bashrc__Testfile
-          marker: "# ANSIBLE TEXT BLOCK "
-          block: |
-            echo "
-            Infos (Ansible) aus der .bashrc:
-            screen -ls
-            eval \"\`ssh-agent\`\" &&  ssh-add
-            "
+      ansible.builtin.blockinfile:
+        path: /home/ok8cp5/__.bashrc__Testfile
+        marker: "# ANSIBLE TEXT BLOCK "
+        block: |
+          echo "
+          Infos (Ansible) aus der .bashrc:
+          screen -ls
+          eval \"\`ssh-agent\`\" &&  ssh-add
+          "
 #
 
