@@ -46,4 +46,5 @@
       loop:
         - { src: bigaex/Aex/Linux/config/.GraHu, dest: /home/ok8cp5/.GraHu }
         - { src: bigaex/Aex/Linux/config/.smbcredentials, dest: /home/ok8cp5/.smbcredentials }
+        - { src: bigaex/Aex/Linux/config/.netrc, dest: /home/ok8cp5/.netrc }
 
