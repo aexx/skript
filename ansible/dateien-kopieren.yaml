@@ -20,7 +20,7 @@
         group: ok8cp5
       loop:
         - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh
-          dest: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
+          dest: /home/ok8cp5/.config/old-autostart-scripts/autostart-ssh-unlock.sh
         - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh.desktop
           dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
 ##
@@ -39,7 +39,7 @@
         path: "{{ item.path }}"
         mode: "0755"
       loop:
-        - path: /home/ok8cp5/.config/autostart-scripts/autostart-ssh-unlock.sh
+        - path: /home/ok8cp5/.config/old-autostart-scripts/autostart-ssh-unlock.sh
 ####
     - name: Create a symbolic links
       ansible.builtin.file:
