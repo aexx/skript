@@ -9,7 +9,8 @@
         state: directory
       loop:
         - path: /home/ok8cp5/.config/old-autostart-scripts/
-        - path: /aexdisk/bigaex
+        - path: /aexdisk/bigaex/
+        - path: /home/ok8cp5/githubaexx/
         
 ####
     - name: copy multiple items
