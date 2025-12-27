@@ -3,5 +3,5 @@
   tasks:
   - name : Install multiple packages
     apt: name={{ item }} state=latest update_cache=true
-    loop: [python-is-python3, unison-gtk, git, krusader, meld, btop, asciidoc, nmap, screen, krename, wakeonlan, x2goclient, pdftk-java, remmina-plugin-rdp, remmina-plugin-x2go, autokey-qt, autokey-gtk, nala]
+    loop: [keepassxc, python-is-python3, unison-gtk, git, krusader, meld, btop, asciidoc, nmap, screen, krename, wakeonlan, x2goclient, pdftk-java, remmina-plugin-rdp, remmina-plugin-x2go, autokey-qt, autokey-gtk, nala]
 #
