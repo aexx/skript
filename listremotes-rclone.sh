@@ -9,6 +9,8 @@ ma="$(tput setaf 5)"
 hb="$(tput setaf 6)"
 we="$(tput setaf 7)"
 fett=$(tput bold)
+bon=$(tput smso)  # set bold on
+boff=$(tput rmso) # remove bold
 norm=$(tput sgr0)
 
 printf "\n\n"
