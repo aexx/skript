@@ -15,7 +15,7 @@ printf "\n\n"
 rclone listremotes|while read a
  do 
   printf "${gr}┌───────────────┐$a┌────────────────────────────────────────────╁"
-  kreiselnala 2 || sleep 2
+  sleep 1
   printf "\n│${norm}$(rclone about ${a})\n"
   printf "${gr}└─────────┐${norm}\n"
   rclone lsd $a
