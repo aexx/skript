@@ -54,6 +54,8 @@
         - { src: bigaex/Aex/Linux/config/.GraHu, dest: /home/ok8cp5/.GraHu }
         - { src: bigaex/Aex/Linux/config/.smbcredentials, dest: /home/ok8cp5/.smbcredentials }
         - { src: bigaex/Aex/Linux/config/.netrc, dest: /home/ok8cp5/.netrc }
-        - { src: /aexdisk, dest: /home/ok8cp5/aexdisk  }
-        - { src: /aexdisk/bigaex, dest: /home/ok8cp5/bigaex  }
+        - { src: bigaex/Aex/Linux/config/rclone, dest: /home/ok8cp5/.config/rclone }
+        - { src: /aexdisk, dest: /home/ok8cp5/aexdisk }
+        - { src: /aexdisk/bigaex, dest: /home/ok8cp5/bigaex }
+
 
