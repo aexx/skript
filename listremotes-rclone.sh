@@ -23,6 +23,6 @@ rclone listremotes|while read a
   rclone lsd $a
 done
 echo
-lt .config/rclone
+ls -ltra .config/rclone
 
 
