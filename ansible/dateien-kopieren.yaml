@@ -11,7 +11,6 @@
         - path: /home/ok8cp5/.config/old-autostart-scripts/
         - path: /aexdisk/bigaex/
         - path: /home/ok8cp5/githubaexx/
-        - path: /home/ok8cp5/.config/rclone/
 
 ####
     - name: copy multiple items
@@ -57,6 +56,6 @@
         - { src: bigaex/Aex/Linux/config/.netrc, dest: /home/ok8cp5/.netrc }
         - { src: /aexdisk, dest: /home/ok8cp5/aexdisk }
         - { src: /aexdisk/bigaex, dest: /home/ok8cp5/bigaex }
-        - { src: ../../bigaex/Aex/Linux/config/rclone/rclone.conf, dest: /home/ok8cp5/.config/rclone/rclone.conf }
+        - { src: ../bigaex/Aex/Linux/config/rclone , dest: /home/ok8cp5/.config/rclone }
 
 
