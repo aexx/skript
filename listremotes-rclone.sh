@@ -16,7 +16,7 @@ rclone listremotes|while read a
  do 
   printf "${gr}┌───────────────┐$a┌────────────────────────────────────────────╁"
   sleep 2
-  printf "\n│$(rclone about ${a})\n"
+  printf "\n│${norm}$(rclone about ${a})\n"
   printf "└─────────┐\n"
   rclone lsd $a
 done
