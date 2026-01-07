@@ -16,8 +16,8 @@ rclone listremotes|while read a
  do 
   printf "${gr}┌───────────────┐$a┌────────────────────────────────────────────╁"
   sleep 1
-  printf "\n│${norm}$(rclone about ${a})\n"
-  printf "${gr}└─────────┐${norm}\n"
+  printf "\n│$(rclone about ${a}|sed -e 's/Fr/│Fr/'|sed -e 's/Us/│Us/' )\n"
+  printf "└─────────┐${norm}\n"
   rclone lsd $a
 done
 echo
