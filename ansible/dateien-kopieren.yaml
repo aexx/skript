@@ -11,6 +11,7 @@
         - path: /home/ok8cp5/.config/old-autostart-scripts/
         - path: /aexdisk/bigaex/
         - path: /home/ok8cp5/githubaexx/
+        - path: /home/ok8cp5/mnt/
 
 ####
     - name: copy multiple items
