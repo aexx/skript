@@ -12,6 +12,7 @@
         - path: /aexdisk/bigaex/
         - path: /home/ok8cp5/githubaexx/
         - path: /home/ok8cp5/mnt/
+        - path: /aexdisk/tmp/
 
 ####
     - name: copy multiple items
