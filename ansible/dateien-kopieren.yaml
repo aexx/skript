@@ -26,6 +26,8 @@
           dest: /home/ok8cp5/.config/old-autostart-scripts/autostart-ssh-unlock.sh
         - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh.desktop
           dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
+        - src: ~/githubaexx/skript/ansible/sudoers-alex
+          dest: /etc/sudoers.d/alex
 ##
     - name: copy multiple items
       ansible.builtin.copy: 
