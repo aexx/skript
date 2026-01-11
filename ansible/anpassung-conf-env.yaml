@@ -56,8 +56,8 @@
         line: "{{ item.line }}"
         regexp: "{{ item.regexp }}"
       loop:
-        - line: %sudo   ALL=NOPASSWD: /usr/bin/id , /usr/bin/veracrypt , /usr/bin/mintupdate , /usr/sbin/synaptic , /usr/bin/synaptic-pkexec , /usr/lib/linuxmint/mintUpdate/mintUpdate.py , /sbin/fdisk
-          regexp: ^%sudo   ALL=NOPASSWD: 
+        - line: %sudo ALL=NOPASSWD:/usr/bin/id, /usr/bin/veracrypt, /usr/bin/mintupdate, /usr/sbin/synaptic, /usr/bin/synaptic-pkexec, /usr/lib/linuxmint/mintUpdate/mintUpdate.py, /sbin/fdisk
+          regexp: ^%sudo ALL=NOPASSWD:
 #        - line: 
 #          regexp: ^
     
