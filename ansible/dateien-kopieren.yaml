@@ -15,7 +15,7 @@
         - path: /aexdisk/tmp/
 
 ####
-    - name: copy multiple items
+    - name: copy multiple items for ok8cp5
       ansible.builtin.copy: 
         src: "{{ item.src }}" 
         dest: "{{ item.dest }}"
@@ -26,10 +26,8 @@
           dest: /home/ok8cp5/.config/old-autostart-scripts/autostart-ssh-unlock.sh
         - src: ~/githubaexx/skript/ansible/autostart-ssh-unlock.sh.desktop
           dest: /home/ok8cp5/.config/autostart/autostart-ssh-unlock.sh.desktop
-        - src: ~/githubaexx/skript/ansible/sudoers-alex
-          dest: /etc/sudoers.d/alex
 ##
-    - name: copy multiple items
+    - name: copy multiple items for root
       ansible.builtin.copy: 
         src: "{{ item.src }}" 
         dest: "{{ item.dest }}"
@@ -38,6 +36,8 @@
       loop:        
         - src: ~/githubaexx/skript/ansible/unison.logrotate
           dest: /etc/logrotate.d/unison    
+        - src: ~/githubaexx/skript/ansible/sudoers-alex
+          dest: /etc/sudoers.d/alex
 ####
     - name: Ensure scripts are executable
       ansible.builtin.file:
