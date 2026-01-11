@@ -47,6 +47,17 @@
           screen -ls
           eval \"\`ssh-agent\`\" &&  ssh-add
           "
-#
-
+# 
+    - name: Change multiple lines sudoers
+      #lineinfile:
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/alex
+        backup: true
+        line: "{{ item.line }}"
+        regexp: "{{ item.regexp }}"
+      loop:
+        - line: %sudo   ALL=NOPASSWD: /usr/bin/id , /usr/bin/veracrypt , /usr/bin/mintupdate , /usr/sbin/synaptic , /usr/bin/synaptic-pkexec , /usr/lib/linuxmint/mintUpdate/mintUpdate.py , /sbin/fdisk
+          regexp: ^%sudo   ALL=NOPASSWD: 
+#        - line: 
+#          regexp: ^
     
