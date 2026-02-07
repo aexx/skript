@@ -6,7 +6,8 @@ b="\033[34m"
 hb="\033[36m"
 li="\033[35m"
 n="\033[m\017"
-WAIT () { kreisel b $1 2>/dev/null || sleep $1; }
+AEXTOOLPATH=$(dirname $0)
+WAIT () { ${AEXTOOLPATH}/kreisel b $1 2>/dev/null || sleep $1; }
 usage ()
 {
 	printf "\n${g}
