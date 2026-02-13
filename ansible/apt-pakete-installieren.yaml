@@ -27,4 +27,5 @@
       - gsmartcontrol
       - xclip
       - python3-pyfuse3
+      - iotop-c
 #
