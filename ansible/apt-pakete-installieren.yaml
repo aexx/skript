@@ -6,7 +6,6 @@
     loop: 
       - keepassxc
       - python-is-python3
-      - python-tk
       - unison-gtk
       - git
       - krusader
