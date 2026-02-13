@@ -28,4 +28,10 @@
       - xclip
       - python3-pyfuse3
       - iotop-c
+      - dupeguru
+      - xprintidle
+      - rclone-browser
+      - duff
+      - expect
+      - ssdeep
 #
