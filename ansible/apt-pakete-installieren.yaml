@@ -34,4 +34,6 @@
       - duff
       - expect
       - ssdeep
+      - colordiff
+      - xterm
 #
