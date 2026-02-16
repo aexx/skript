@@ -70,10 +70,10 @@
         regexp: "{{ item.regexp }}"
       loop:
         - line: Exec=/usr/bin/google-chrome-stable --disk-cache-dir=/dev/shm/ --disk-cache-size=14000000 %U
-          regexp: ^Exec=/usr/bin/google-chrome-stable %U
+          regexp: ^Exec=/usr/bin/google-chrome-stable %U$
         - line: Exec=/usr/bin/google-chrome-stable --disk-cache-dir=/dev/shm/ --disk-cache-size=14000000
-          regexp: ^Exec=/usr/bin/google-chrome-stable
+          regexp: ^Exec=/usr/bin/google-chrome-stable$
         - line: Exec=/usr/bin/google-chrome-stable --disk-cache-dir=/dev/shm/ --disk-cache-size=14000000 --incognito
-          regexp: ^Exec=/usr/bin/google-chrome-stable --incognito
+          regexp: ^Exec=/usr/bin/google-chrome-stable --incognito$
 #
 #
