@@ -32,7 +32,7 @@ fi
 [ "$2" = "difftool" ] && DIFF=difftool 
 ask () {
 printf "
-╭──── Weiter? / continue? ──────────────────────────────────────────────────╮
+╭────┐Weiter? / continue?┌──────────────────────────────────────────────────╮
 │                        [Eingabe/Enter/Return] oder/or [Strg]/[Ctrl] + [C] │
 ╰───────────────────────────────────────────────────────────────────────────╯"
 read
@@ -41,14 +41,14 @@ printf "${n}"
 aexgitdiff () { 
 DIFF1="git diff" ; DIFF2="git diff main origin/main"
 DIFF1A="git $DIFF" ; DIFF2A="git $DIFF main origin/main"
-printf "${n}\r
-╭────────────────────────────────────────────────────────╁
+#printf "${n}\r
+printf "${n}╭────────────────────────────────────────────────────────╁
 ╰────╁ git diff 
 $DIFF1 ${n}"
 $DIFF1
 [ -n "$DIFF" ] && $DIFF1A
-printf "${n}\r
-╭────────────────────────────────────────────────────────╁
+#printf "${n}\r
+printf "${n}╭────────────────────────────────────────────────────────╁
 ╰────╁ git diff main origin/main 
 $DIFF2 ${n}" 
 $DIFF2
@@ -72,12 +72,12 @@ if [ -d $1 ]
   exit 1
 fi
 #ask
-WAIT 5
+WAIT 3
 #
 for repo in `ls`
 do
  cd $repo
- printf "${g}\r
+ printf "${hb}\r
 ╭───────────────────────────────────────────────────────────────────────────╮
 │  $repo                                                    $( tput hpa 75) │
 ╰───────────────────────────────────────────────────────────────────────────╯${li}
@@ -109,7 +109,10 @@ ${STATUS}:
    printf "\nno changes PUSH\n";
  fi
  cd ..
- #countdown g 1 2>/dev/null || sleep 2
+printf "${g}\r
+╭───┐ DONE ┌────────────────────────────────────────────────────────────────╮
+╰───────────────────────────────────────────────────────────────────────────╯${li}
+ WAIT 2
 done
 printf "\n${n}"
 #
