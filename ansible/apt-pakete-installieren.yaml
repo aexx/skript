@@ -37,4 +37,5 @@
       - colordiff
       - xterm
       - ocrmypdf
+      - tesseract-ocr-deu
 #
