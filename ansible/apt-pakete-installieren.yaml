@@ -38,4 +38,5 @@
       - xterm
       - ocrmypdf
       - tesseract-ocr-deu
+      - ftp
 #
