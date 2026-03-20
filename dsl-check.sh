@@ -54,7 +54,8 @@ do
  # Log kopieren
  log_copy ()
  {
-   zielordner=/media/fritz-smb/T7/alex/bigaex/Sicherung/RaspberryPi/
+   ##zielordner=/media/fritz-smb/T7/alex/bigaex/Sicherung/RaspberryPi/
+   zielordner=/media/lgnas/aexdisk/bigaex/Sicherung/RaspberryPi/
    zeilen=$(wc -l ${LOG}|cut -d " " -f1)
    [ ${zeilen} -gt 555 ] && [ -d ${zielordner} ] && cp $LOG ${zielordner}/dsl-check.sh_$(date +%F).log && mv $LOG ${LOG}_moved_$(date +%F)
  }
