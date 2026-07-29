@@ -62,7 +62,7 @@ sleep 2
 #### umount
 printf "${bl}
 ╭────┐UMount ?┌───────────────────────────────────────────╮
-╰───────────────────────────┐${norm}ENTER${norm}┌────┐${norm}CTRL+C${norm}┌───────────╯${norm}
+╰───────────────────────────┐${fett}ENTER${norm}${bl}┌────┐${fett}CTRL+C${norm}${bl}┌───────────╯${norm}
 "
 read
 printf "
