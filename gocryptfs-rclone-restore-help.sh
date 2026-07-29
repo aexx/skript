@@ -14,6 +14,7 @@ boff=$(tput rmso) # remove bold
 norm=$(tput sgr0)
 
 
+
 usage ()
 {
         printf "\n${g}
