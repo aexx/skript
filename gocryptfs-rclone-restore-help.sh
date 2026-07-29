@@ -55,12 +55,14 @@ gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 df -h
 sleep 2
 ls -ltra $RESTOREMNT
+sleep 2
 
 
 
 
 
 #### umount
+sleep 2
 printf "
 ${gr}┌───────────────┐UMount┌────────────────────────────────────────────────────────────────────────────╁
 │ 
