@@ -19,8 +19,8 @@ usage ()
 {
 printf "\n${gr}
 ╭────┐Usage┌──────────────────────────────────────────────────────────────────────────────────────────────╮
-│ gocryptfs-rclone-restore-help.sh ${norm}FILE-for-DIFF REMOTE-PATH LOCAL-PATH ${gr} $(tput hpa 105) │
-│ e.g.: gocryptfs-rclone-restore-help.sh myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 105) │
+│ gocryptfs-rclone-restore-help.sh ${norm} FILE-for-DIFF REMOTE-PATH LOCAL-PATH ${gr} $(tput hpa 105) │
+│ e.g.: gocryptfs-rclone-restore-help.sh ${norm} myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 }
@@ -35,9 +35,9 @@ fi
 
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
-│ FILE-for-DIFF:${norm} $1 $(tput hpa 105) │
-│ REMOTE-PATH:${norm}  $2  $(tput hpa 105) │
-│ LOCAL-PATH:${norm}   $3  $(tput hpa 105) │
+│ FILE-for-DIFF:${norm} $1 ${gr} $(tput hpa 105) │
+│ REMOTE-PATH:${norm}   $2 ${gr} $(tput hpa 105) │
+│ LOCAL-PATH:${norm}    $3 ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 
