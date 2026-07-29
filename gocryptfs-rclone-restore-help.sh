@@ -62,11 +62,13 @@ sleep 2
 
 
 #### umount
-sleep 2
+read -P____UMount_ALL____?____
 printf "
 ${gr}┌───────────────┐UMount┌────────────────────────────────────────────────────────────────────────────╁
 │ 
-╰─╁ ${norm}"fusermount -u $RESTOREMNT
+╰─╁ ${norm}"
+sleep 2
+fusermount -u $RESTOREMNT
 sleep 2
 fusermount -u $PCMOUNT
 df -h
