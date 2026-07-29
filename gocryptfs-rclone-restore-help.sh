@@ -44,11 +44,13 @@ if [ -z $2 ]
 
 
 printf "\n\n"
-printf "${gr}┌───────────────┐$0┌────────────────────────────────────────────╁"
+printf "${gr}┌───────────────┐Mount┌────────────────────────────────────────────╁"
 
 mkdir -p $PCMOUNT $RESTOREMNT
 
 rclone mount --vfs-cache-mode writes --read-only $2 $PCMOUNT
+df -ha
+
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 
 df -ha
