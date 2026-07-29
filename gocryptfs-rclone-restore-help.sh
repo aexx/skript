@@ -47,7 +47,7 @@ if [ -z $2 ]
 printf "\n\n"
 printf "${gr}┌───────────────┐Mount┌─────────────────────────────────────────────────────────────────────────────╁
 │ 
-│ ${norm} "
+╰─╁ ${norm}"
 
 mkdir -p $PCMOUNT $RESTOREMNT
 rclone mount --vfs-cache-mode writes --read-only --daemon $2 $PCMOUNT
@@ -62,8 +62,10 @@ ls -ltra $RESTOREMNT
 
 
 #### umount
-printf "${gr}┌───────────────┐UMount┌────────────────────────────────────────────────────────────────────────────╁
-fusermount -u $RESTOREMNT
+printf "
+${gr}┌───────────────┐UMount┌────────────────────────────────────────────────────────────────────────────╁
+│ 
+╰─╁ ${norm}"fusermount -u $RESTOREMNT
 sleep 2
 fusermount -u $PCMOUNT
 df -h
