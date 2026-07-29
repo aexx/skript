@@ -48,7 +48,7 @@ printf "${gr}┌───────────────┐Mount┌──�
 
 mkdir -p $PCMOUNT $RESTOREMNT
 
-rclone mount --vfs-cache-mode writes --read-only $2 $PCMOUNT
+rclone mount --vfs-cache-mode writes --read-only --daemon $2 $PCMOUNT
 df -ha
 
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
