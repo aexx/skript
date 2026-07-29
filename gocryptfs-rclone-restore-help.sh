@@ -22,6 +22,8 @@ usage ()
 │                                                                                          │
 │ $(basename $0) ${norm}filename-to-find-for-restore REMOTE-PATH [LOCAL-PATH] ${gr} $(tput hpa 90) │
 │                                                                                          │
+│ e.g.: $(basename $0) testinger pcloud:gcrfs/ae/gocryptfs_bigaex  $(tput hpa 90) │
+│                                                                                          │
 ╰──────────────────────────────────────────────────────────────────────────────────────────╯ "
 }
 
@@ -44,6 +46,7 @@ if [ -z $2 ]
 printf "\n\n"
 printf "${gr}┌───────────────┐$0┌────────────────────────────────────────────╁"
 
+mkdir -p $PCMOUNT $RESTOREMNT
 
 rclone mount --vfs-cache-mode writes --read-only pcloud:gcrfs/ae/gocryptfs_bigaex $PCMOUNT
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
