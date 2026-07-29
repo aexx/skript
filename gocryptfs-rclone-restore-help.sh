@@ -12,8 +12,8 @@ fett=$(tput bold)
 bon=$(tput smso)  # set bold on
 boff=$(tput rmso) # remove bold
 norm=$(tput sgr0)
-
-
+PCMOUNT=/dev/shm/pcloudmount
+RESTOREMNT=/dev/shm/restoremount
 
 usage ()
 {
@@ -43,5 +43,28 @@ if [ -z $2 ]
 
 printf "\n\n"
 printf "${gr}┌───────────────┐$0┌────────────────────────────────────────────╁"
+
+
+rclone mount --vfs-cache-mode writes --read-only pcloud:gcrfs/ae/gocryptfs_bigaex $PCMOUNT
+gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
+
+df -ha
+ls -ltra $RESTOREMNT
+
+kreiselnala 3 || sleep 3
+
+fusermount -u $RESTOREMNT
+kreiselnala 3 || sleep 3
+fusermount -u $PCMOUNT
+df -ha
+
+
+
+
+
+
+
+
+
 
 
