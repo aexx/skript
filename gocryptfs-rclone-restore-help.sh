@@ -22,7 +22,6 @@ printf "\n${gr}
 │ gocryptfs-rclone-restore-help.sh ${norm}FILE-for-DIFF REMOTE-PATH LOCAL-PATH ${gr} $(tput hpa 105) │
 │ e.g.: gocryptfs-rclone-restore-help.sh myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
-
 ${norm} "
 }
 
@@ -40,7 +39,6 @@ printf "\n${gr}
 │ REMOTE-PATH: $2  $(tput hpa 105) │
 │ LOCAL-PATH: $3  $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
-
 ${norm} "
 
 printf "\n\n"
