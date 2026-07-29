@@ -47,7 +47,7 @@ if [ -z $2 ]
 printf "\n\n"
 printf "${gr}┌───────────────┐Mount┌────────────────────────────────────────────╁
 │ 
-│ "
+│ ${norm} "
 
 mkdir -p $PCMOUNT $RESTOREMNT
 
