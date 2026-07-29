@@ -25,6 +25,7 @@ printf "\n${gr}
 │ e.g.: gocryptfs-rclone-restore-help.sh myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 99) │
 │                                                                                                   │
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────╯ 
+
 ${norm} "
 }
 
@@ -43,22 +44,27 @@ if [ -z $2 ]
     LOCALDIR=${2}
   fi
 
-
 printf "\n\n"
-printf "${gr}┌───────────────┐Mount┌────────────────────────────────────────────╁
+printf "${gr}┌───────────────┐Mount┌─────────────────────────────────────────────────────────────────────────────╁
 │ 
 │ ${norm} "
 
 mkdir -p $PCMOUNT $RESTOREMNT
-
 rclone mount --vfs-cache-mode writes --read-only --daemon $2 $PCMOUNT
-df -h
+#df -h
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 df -h
+sleep 2
 ls -ltra $RESTOREMNT
-sleep 3
+
+
+
+
+
+#### umount
+printf "${gr}┌───────────────┐UMount┌────────────────────────────────────────────────────────────────────────────╁
 fusermount -u $RESTOREMNT
-sleep 3
+sleep 2
 fusermount -u $PCMOUNT
 df -h
 
