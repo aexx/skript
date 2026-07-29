@@ -22,7 +22,7 @@ usage ()
 │                                                                                          │
 │ $(basename $0) ${norm}filename-to-find-for-restore REMOTE-PATH [LOCAL-PATH] ${gr} $(tput hpa 90) │
 │                                                                                          │
-│ e.g.: $(basename $0) testinger pcloud:gcrfs/ae/gocryptfs_bigaex ${HOME}/bigaex/ $(tput hpa 90) │
+│ e.g.: $(basename $0) myfile pcloud:gcrfs/ae/gocryptfs_bigaex ${HOME}/myfolder/ $(tput hpa 90) │
 │                                                                                          │
 ╰──────────────────────────────────────────────────────────────────────────────────────────╯ "
 }
