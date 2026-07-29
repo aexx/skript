@@ -20,7 +20,7 @@ usage ()
 printf "\n${gr}
 ╭────┐Usage┌──────────────────────────────────────────────────────────────────────────────────────────────╮
 │ gocryptfs-rclone-restore-help.sh ${norm} FILE-for-DIFF REMOTE-PATH LOCAL-PATH ${gr} $(tput hpa 105) │
-│ e.g.: gocryptfs-rclone-restore-help.sh ${norm} myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 105) │
+│ e.g.: gocryptfs-rclone-restore-help.sh ${norm} myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 }
