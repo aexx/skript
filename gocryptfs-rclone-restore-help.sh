@@ -48,7 +48,7 @@ printf "${gr}┌───────────────┐$0┌───�
 
 mkdir -p $PCMOUNT $RESTOREMNT
 
-rclone mount --vfs-cache-mode writes --read-only pcloud:gcrfs/ae/gocryptfs_bigaex $PCMOUNT
+rclone mount --vfs-cache-mode writes --read-only $2 $PCMOUNT
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 
 df -ha
