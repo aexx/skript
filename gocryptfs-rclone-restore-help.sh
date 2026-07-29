@@ -17,14 +17,15 @@ RESTOREMNT=/dev/shm/restoremount
 
 usage ()
 {
-        printf "\n${gr}
-╭────┐Usage┌───────────────────────────────────────────────────────────────────────────────╮
-│                                                                                          │
-│ $(basename $0) ${norm}filename-to-find-for-restore REMOTE-PATH [LOCAL-PATH] ${gr} $(tput hpa 90) │
-│                                                                                          │
-│ e.g.: $(basename $0) myfile pcloud:gcrfs/ae/gocryptfs_bigaex ${HOME}/myfolder/ $(tput hpa 90) │
-│                                                                                          │
-╰──────────────────────────────────────────────────────────────────────────────────────────╯ "
+printf "\n${gr}
+╭────┐Usage┌────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                   │
+│ gocryptfs-rclone-restore-help.sh ${norm}filename-to-find-for-restore REMOTE-PATH [LOCAL-PATH] ${gr} $(tput hpa 99) │
+│                                                                                                   │
+│ e.g.: gocryptfs-rclone-restore-help.sh myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 99) │
+│                                                                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯ 
+${norm} "
 }
 
 if [ $# -lt 2 ]
