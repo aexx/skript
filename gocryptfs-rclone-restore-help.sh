@@ -18,15 +18,15 @@ RESTOREMNT=/dev/shm/restoremount
 usage ()
 {
 printf "\n${gr}
-╭────┐Usage┌────────────────────────────────────────────────────────────────────────────────────────╮
-│ gocryptfs-rclone-restore-help.sh ${norm}filename-to-find-for-restore REMOTE-PATH [LOCAL-PATH] ${gr} $(tput hpa 99) │
-│ e.g.: gocryptfs-rclone-restore-help.sh myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 99) │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────╯ 
+╭────┐Usage┌──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ gocryptfs-rclone-restore-help.sh ${norm}FILE-for-DIFF REMOTE-PATH LOCAL-PATH ${gr} $(tput hpa 105) │
+│ e.g.: gocryptfs-rclone-restore-help.sh myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ $(tput hpa 105) │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 
 ${norm} "
 }
 
-if [ $# -lt 2 ]
+if [ $# -lt 3 ]
  then
   usage ; echo
   exit 1
@@ -34,12 +34,14 @@ if [ $# -lt 2 ]
   usage
 fi
 
-if [ -z $2 ] 
-   then
-    LOCALDIR=${HOME}/bigaex/ 
-   else
-    LOCALDIR=${2}
-  fi
+printf "\n${gr}
+╭────┐Usage┌──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ FILE-for-DIFF: $1 $(tput hpa 105) │
+│ REMOTE-PATH: $2  $(tput hpa 105) │
+│ LOCAL-PATH: $3  $(tput hpa 105) │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
+
+${norm} "
 
 printf "\n\n"
 printf "${gr}┌───────────────┐Mount┌─────────────────────────────────────────────────────────────────────────────╁
