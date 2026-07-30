@@ -35,8 +35,8 @@ FILE1=$(find $LOCALPATH -type f -name "$FILE")
 FILE2=$(echo $FILE1 |awk -F"${LOCALPATH}" '{print $2}')
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
-│ FILE1=${norm} $FILE1 ${gr} $(tput hpa 105) │
-│ FILE2=${norm} $FILE2 ${gr} $(tput hpa 105) │
+│ FILE1:${norm} ${FILE1} ${gr} $(tput hpa 105) │
+│ FILE2:${norm} ${RESTOREMNT}${FILE2} ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 
