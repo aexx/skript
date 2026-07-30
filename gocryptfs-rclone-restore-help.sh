@@ -40,7 +40,7 @@ printf "${gr}
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 \n\n${norm}"
 DIFFS="${FILE1} ${RESTOREMNT}/${FILE2}"
-meld $DIFFS || git diff --no-index $DIFFS || diff $DIFFS
+meld $DIFFS || git diff --no-index $DIFFS || diff -s $DIFFS
 }
 
 
