@@ -14,8 +14,18 @@ boff=$(tput rmso) # remove bold
 norm=$(tput sgr0)
 PCMOUNT=/dev/shm/pcloudmount
 RESTOREMNT=/dev/shm/restoremount
-
+REMOTEPATH=$1
+LOCALPATH=$2
+FILE=$3
 typeset -i FILECOUNT
+
+if [ $# -lt 3 ]
+ then
+  usage ; echo
+  exit 1
+ else
+  usage
+fi
 
 usage ()
 {
@@ -41,19 +51,12 @@ ${norm}"
 
 }
 
-if [ $# -lt 3 ]
- then
-  usage ; echo
-  exit 1
- else
-  usage
-fi
 
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
-│ FILE-for-DIFF:${norm} $3 ${gr} $(tput hpa 105) │
-│ REMOTE-PATH:${norm}   $1 ${gr} $(tput hpa 105) │
-│ LOCAL-PATH:${norm}    $2 ${gr} $(tput hpa 105) │
+│ REMOTE-PATH:${norm}   $REMOTEPATH ${gr} $(tput hpa 105) │
+│ LOCAL-PATH:${norm}    $LOCALPATH ${gr} $(tput hpa 105) │
+│ FILE-for-DIFF:${norm} $FILE ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 
@@ -63,7 +66,7 @@ printf "${gr}
 ╰─╁ ${norm}"
 
 mkdir -p $PCMOUNT $RESTOREMNT
-rclone mount --vfs-cache-mode writes --read-only --daemon $1 $PCMOUNT
+rclone mount --vfs-cache-mode writes --read-only --daemon $REMOTEPATH $PCMOUNT
 #df -h
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 df -h
@@ -72,7 +75,7 @@ ls -ltra $RESTOREMNT
 sleep 2
 
 
-FILECOUNT=$(find $2 -type f -name "$3" |wc -l)
+FILECOUNT=$(find $LOCALPATH -type f -name "$FILE" |wc -l)
 
 echo "$FILECOUNT"
 if [ $FILECOUNT -ne 1 ] 
