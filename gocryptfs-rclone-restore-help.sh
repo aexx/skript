@@ -39,7 +39,7 @@ ${norm}"
 
 difffunc ()
 {
-FILE1=$(find $2 -type f -name "$3")
+FILE1=$(find $LOCALPATH -type f -name "$FILE")
 echo "$FILE1"
 
 printf "${gr}
