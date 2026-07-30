@@ -21,16 +21,15 @@ usage ()
 {
 printf "\n${gr}
 ╭────┐Usage┌──────────────────────────────────────────────────────────────────────────────────────────────╮
-│ gocryptfs-rclone-restore-help.sh ${norm} FILE-for-DIFF REMOTE-PATH LOCAL-PATH ${gr} $(tput hpa 105) │
-│ e.g.: gocryptfs-rclone-restore-help.sh ${norm} myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ ${gr} $(tput hpa 105) │
+│ gocryptfs-rclone-restore-help.sh ${norm} REMOTE-PATH LOCAL-PATH FILE-for-DIFF ${gr} $(tput hpa 105) │
+│ e.g.: gocryptfs-rclone-restore-help.sh ${norm} pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ myfile ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 }
 
 difffunc ()
 {
-FILE1=$(find $3 -type f -name "$1")
-
+FILE1=$(find $2 -type f -name "$3")
 
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -51,9 +50,9 @@ fi
 
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
-│ FILE-for-DIFF:${norm} $1 ${gr} $(tput hpa 105) │
-│ REMOTE-PATH:${norm}   $2 ${gr} $(tput hpa 105) │
-│ LOCAL-PATH:${norm}    $3 ${gr} $(tput hpa 105) │
+│ FILE-for-DIFF:${norm} $3 ${gr} $(tput hpa 105) │
+│ REMOTE-PATH:${norm}   $1 ${gr} $(tput hpa 105) │
+│ LOCAL-PATH:${norm}    $2 ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 
@@ -63,7 +62,7 @@ printf "${gr}
 ╰─╁ ${norm}"
 
 mkdir -p $PCMOUNT $RESTOREMNT
-rclone mount --vfs-cache-mode writes --read-only --daemon $2 $PCMOUNT
+rclone mount --vfs-cache-mode writes --read-only --daemon $1 $PCMOUNT
 #df -h
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 df -h
@@ -72,7 +71,7 @@ ls -ltra $RESTOREMNT
 sleep 2
 
 
-FILECOUNT=$(find $3 -type f -name "$1" |wc -l)
+FILECOUNT=$(find $2 -type f -name "$3" |wc -l)
 
 echo "$FILECOUNT"
 if [ $FILECOUNT -ne 1 ] 
