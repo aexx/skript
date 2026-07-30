@@ -48,7 +48,7 @@ if [ $# -lt 3 ]
   usage ; echo
   exit 1
  else
-  usage
+  #usage
 fi
 
 
