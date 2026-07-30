@@ -75,7 +75,7 @@ sleep 2
 FILECOUNT=$(find $3 -type f -name "$1" |wc -l)
 
 echo "$FILECOUNT"
-if [ $FILECOUNT1 -ne 1 ] 
+if [ $FILECOUNT -ne 1 ] 
  then
   printf "${bl}\nDatei existiert nicht oder mehr als einmal - kein DIFF / File does not exist or exists more than once - no DIFF ${norm}\n"
  else
