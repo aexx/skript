@@ -40,8 +40,7 @@ ${norm}"
 difffunc ()
 {
 FILE1=$(find $LOCALPATH -type f -name "$FILE")
-echo "$FILE1"
-
+FILE2=$(echo $FILE1 |awk -F"${LOCALPATH}" '{print $2}')
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
 │ FILE1=${norm} $FILE1 ${gr} $(tput hpa 105) │
