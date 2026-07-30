@@ -19,14 +19,6 @@ LOCALPATH=$2
 FILE=$3
 typeset -i FILECOUNT
 
-if [ $# -lt 3 ]
- then
-  usage ; echo
-  exit 1
- else
-  usage
-fi
-
 usage ()
 {
 printf "\n${gr}
@@ -48,8 +40,16 @@ printf "${gr}
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
 
-
 }
+
+
+if [ $# -lt 3 ]
+ then
+  usage ; echo
+  exit 1
+ else
+  usage
+fi
 
 
 printf "${gr}
