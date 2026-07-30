@@ -15,6 +15,8 @@ norm=$(tput sgr0)
 PCMOUNT=/dev/shm/pcloudmount
 RESTOREMNT=/dev/shm/restoremount
 
+typeset -i FILECOUNT
+
 usage ()
 {
 printf "\n${gr}
@@ -23,6 +25,19 @@ printf "\n${gr}
 │ e.g.: gocryptfs-rclone-restore-help.sh ${norm} myfile pcloud:gcrfs/ae/gocryptfs_bigaex /mypath/myfolder/ ${gr} $(tput hpa 105) │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
 ${norm}"
+}
+
+difffunc ()
+{
+FILE1=$(find $3 -type f -name "$1")
+FILE2=$(find $RESTOREMNT -type f -name "$1")
+printf "${gr}
+╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
+│ FILE1=${norm} $FILE1 ${gr} $(tput hpa 105) │
+│ FILE2=${norm} $FILE2 ${gr} $(tput hpa 105) │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯ 
+${norm}"
+
 }
 
 if [ $# -lt 3 ]
@@ -56,8 +71,16 @@ ls -ltra $RESTOREMNT
 sleep 2
 
 
-
-
+FILECOUNT1=$(find $3 -type f -name "$1" |wc -l)
+FILECOUNT2=$(find $RESTOREMNT -type f -name "$1" |wc -l)
+echo "$FILECOUNT1 $FILECOUNT2"
+if [ $FILECOUNT1 -gt 1 ] | [ $FILECOUNT2 -gt 1 ] 
+ then
+  printf "${bl}\nDatei existiert mehr als einmal - kein DIFF / file exists more than once - no DIFF ${norm}\n"
+ else
+  difffunc
+fi
+  
 
 #### umount
 printf "${bl}
