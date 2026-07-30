@@ -80,7 +80,11 @@ FILECOUNT=$(find $LOCALPATH -type f -name "$FILE" |wc -l)
 echo "$FILECOUNT"
 if [ $FILECOUNT -ne 1 ] 
  then
-  printf "${bl}\nDatei existiert nicht oder mehr als einmal - kein DIFF / File does not exist or exists more than once - no DIFF ${norm}\n"
+  printf "${bl}
+╭────┐Kein DIFF / No DIFF┌─────────────────────────╮ 
+│ Datei existiert nicht oder mehr als einmal !     │
+│ File does not exist or exists more than once !   │
+╰──────────────────────────────────────────────────╯${norm}\n"
  else
   difffunc
 fi
