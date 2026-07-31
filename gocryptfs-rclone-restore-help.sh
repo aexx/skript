@@ -34,11 +34,20 @@ difffunc ()
 FILE1=$(find $LOCALPATH -type f -name "$FILE")
 FILE2=$(echo $FILE1 |awk -F"${LOCALPATH}" '{print $2}')
 printf "${gr}
-╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
-│ FILE1:${norm} ${FILE1} ${gr} $(tput hpa 105) │
-│ FILE2:${norm} ${RESTOREMNT}/${FILE2} ${gr} $(tput hpa 105) │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭────┐Info┌─────────────────────────────────────────────────────────────────────────────────────────╁
+│ FILE1:${norm} ${FILE1} ${gr} 
+│ FILE2:${norm} ${RESTOREMNT}/${FILE2} ${gr} 
+│ List and SHA1sum: ${norm}
+ $(ls -la ${FILE1})
+ $(ls -la ${RESTOREMNT}/${FILE2})
+ $(sha1sum ${FILE1})
+ $(sha1sum ${RESTOREMNT}/${FILE2})
 \n\n${norm}"
+printf "${bl}
+╭────┐${fett}DIFF${norm}${bl}┌─────────────────────────────────────────────╮
+╰───────────────────────────┐${fett}ENTER${norm}${bl}┌─────────────────────╯${norm}
+"
+read
 DIFFS="${FILE1} ${RESTOREMNT}/${FILE2}"
 meld $DIFFS || git diff --no-index $DIFFS || diff -s $DIFFS
 }
