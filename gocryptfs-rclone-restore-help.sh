@@ -37,12 +37,12 @@ printf "${gr}
 ╭────┐Info┌─────────────────────────────────────────────────────────────────────────────────────────╁
 │ FILE1:${norm} ${FILE1} ${gr} 
 │ FILE2:${norm} ${RESTOREMNT}/${FILE2} ${gr} 
-│ List and SHA1sum: ${norm}
-│ -> $(ls -la ${FILE1})
-│ -> $(ls -la ${RESTOREMNT}/${FILE2})
-│ -> $(sha1sum ${FILE1})
-│ -> $(sha1sum ${RESTOREMNT}/${FILE2})
-╰─╁\n\n${norm}"
+╰─╁ List and SHA1sum: ${norm}
+-> $(ls -la ${FILE1})
+-> $(ls -la ${RESTOREMNT}/${FILE2})
+-> $(sha1sum ${FILE1})
+-> $(sha1sum ${RESTOREMNT}/${FILE2})
+╰─╁\n${norm}"
 printf "${bl}
 ╭────┐${fett}DIFF${norm}${bl}┌─────────────────────────────────────────────╮
 ╰───────────────────────────┐${fett}ENTER${norm}${bl}┌─────────────────────╯${norm}
@@ -86,8 +86,7 @@ sleep 2
 
 
 FILECOUNT=$(find $LOCALPATH -type f -name "$FILE" |wc -l)
-
-echo "$FILECOUNT"
+#echo "$FILECOUNT"
 if [ $FILECOUNT -ne 1 ] 
  then
   printf "${bl}
