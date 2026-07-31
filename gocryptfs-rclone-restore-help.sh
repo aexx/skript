@@ -37,7 +37,7 @@ printf "${gr}
 ╭────┐Info┌─────────────────────────────────────────────────────────────────────────────────────────╁
 │ FILE1:${norm} ${FILE1} ${gr} 
 │ FILE2:${norm} ${RESTOREMNT}/${FILE2} ${gr} 
-╰─╁ List and SHA1sum: \n${norm}"
+╰─╁ DiskUsage and SHA1sum: \n${norm}"
 du ${FILE1}
 du ${RESTOREMNT}/${FILE2}
 sha1sum ${FILE1}
