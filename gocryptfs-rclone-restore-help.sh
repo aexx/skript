@@ -38,11 +38,11 @@ printf "${gr}
 │ FILE1:${norm} ${FILE1} ${gr} 
 │ FILE2:${norm} ${RESTOREMNT}/${FILE2} ${gr} 
 │ List and SHA1sum: ${norm}
- $(ls -la ${FILE1})
- $(ls -la ${RESTOREMNT}/${FILE2})
- $(sha1sum ${FILE1})
- $(sha1sum ${RESTOREMNT}/${FILE2})
-\n\n${norm}"
+│ -> $(ls -la ${FILE1})
+│ -> $(ls -la ${RESTOREMNT}/${FILE2})
+│ -> $(sha1sum ${FILE1})
+│ -> $(sha1sum ${RESTOREMNT}/${FILE2})
+╰─╁\n\n${norm}"
 printf "${bl}
 ╭────┐${fett}DIFF${norm}${bl}┌─────────────────────────────────────────────╮
 ╰───────────────────────────┐${fett}ENTER${norm}${bl}┌─────────────────────╯${norm}
