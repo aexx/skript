@@ -52,6 +52,7 @@ DIFFS="${FILE1} ${RESTOREMNT}/${FILE2}"
 meld $DIFFS || git diff --no-index $DIFFS || diff -s $DIFFS
 }
 
+### MAIN
 
 if [ $# -lt 3 ]
  then
@@ -60,7 +61,6 @@ if [ $# -lt 3 ]
  else
   echo
 fi
-
 
 printf "${gr}
 ╭────┐Info┌───────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -77,13 +77,12 @@ printf "${gr}
 
 mkdir -p $PCMOUNT $RESTOREMNT
 rclone mount --vfs-cache-mode writes --read-only --daemon $REMOTEPATH $PCMOUNT
-#df -h
+# df -h
 gocryptfs -passfile ~/.GraHu $PCMOUNT $RESTOREMNT
 df -h
 sleep 2
 ls -ltra $RESTOREMNT
 sleep 2
-
 
 FILECOUNT=$(find $LOCALPATH -type f -name "$FILE" |wc -l)
 #echo "$FILECOUNT"
@@ -97,7 +96,6 @@ if [ $FILECOUNT -ne 1 ]
  else
   difffunc
 fi
-  
 
 #### umount
 printf "${bl}
@@ -114,14 +112,4 @@ fusermount -u $RESTOREMNT
 sleep 2
 fusermount -u $PCMOUNT
 df -h
-
-
-
-
-
-
-
-
-
-
-
+printf "\n\n\n"
