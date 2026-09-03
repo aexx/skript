@@ -33,7 +33,9 @@ fi
 ask () {
 printf "
 ╭────┐Weiter? / continue?┌──────────────────────────────────────────────────╮
-│                              [Eingabe/Enter/] oder/or [Strg]/[Ctrl] + [C] │
+│                                 [Eingabe/Enter] oder/or [Strg/Ctrl] + [C] │
+│                                                 [Eingabe] oder [Strg]+[C] │
+│                                                     [Enter] or [Ctrl]+[C] │
 ╰───────────────────────────────────────────────────────────────────────────╯"
 read
 printf "${n}"
