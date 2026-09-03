@@ -33,7 +33,6 @@ fi
 ask () {
 printf "
 ╭────┐Weiter? / continue?┌──────────────────────────────────────────────────╮
-│                                 [Eingabe/Enter] oder/or [Strg/Ctrl] + [C] │
 │                                               [Eingabe] oder [Strg] + [C] │
 │                                                   [Enter] or [Ctrl] + [C] │
 ╰───────────────────────────────────────────────────────────────────────────╯"
@@ -74,7 +73,7 @@ if [ -d $1 ]
   exit 1
 fi
 #ask
-WAIT 3
+WAIT 1
 #
 for repo in `ls`
 do
