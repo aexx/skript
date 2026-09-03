@@ -25,10 +25,10 @@ tag=$(date +%F)
 # └──┴──┘
 header () {
 printf "
-     ┌────┘$tag  [.]⟾  Ping OK  [X]⟾  Ping FAIL
-     │
-     └─────────────────────30─Min─┬─────────────────────60─Min──┐
-$(date +%H:%M)" 
+       ┌────┘$tag  [.]⟾  Ping OK  [X]⟾  Ping FAIL
+       │
+       └─────────────────────30─Min─┬─────────────────────60─Min──┐
+$(date +%H:%M): " 
 }
 
 [ -f $LOCK ] && { printf "\n${r}LOCK: $LOCK - dsl-check is running/ laeuft${n} \n" ; exit 1  ; }
@@ -48,7 +48,7 @@ do
  fi
  [ $zaehler -eq 10 ] && printf "\b:" >> $LOG
  [ $zaehler -eq 10 ] && zaehler=0
- [ $gesamtzaehler -eq 60 ] && printf "\n$(date +%H:%M)" >> $LOG
+ [ $gesamtzaehler -eq 60 ] && printf "\n$(date +%H:%M): " >> $LOG
  [ $gesamtzaehler -eq 60 ] && gesamtzaehler=0
  #
  # Log kopieren
